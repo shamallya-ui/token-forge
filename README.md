@@ -46,11 +46,11 @@ Light-mode page background is soft cream #FAF7F2; dark mode uses the warm black.
 
 | Consumer | What it installs | What it gets |
 |----------|------------------|--------------|
-| Any web app (any stack) | `@shamallya/tokens` | CSS variables |
-| Tailwind app | `@shamallya/tokens` | Tailwind preset |
-| React app | `@shamallya/tokens` + `@shamallya/ui` | shadcn/ui-based components |
-| Svelte 5 app (e.g. Vibgyor) | `@shamallya/tokens` + `@shamallya/ui` | shadcn-svelte-based components |
-| Future: other platforms | `@shamallya/tokens` | Mobile/other outputs from the same source |
+| Any web app (any stack) | `@shamallya-ui/tokens` | CSS variables |
+| Tailwind app | `@shamallya-ui/tokens` | Tailwind preset |
+| React app | `@shamallya-ui/tokens` + `@shamallya-ui/components` | shadcn/ui-based components |
+| Svelte 5 app (e.g. Vibgyor) | `@shamallya-ui/tokens` + `@shamallya-ui/components` | shadcn-svelte-based components |
+| Future: other platforms | `@shamallya-ui/tokens` | Mobile/other outputs from the same source |
 | A company adopting the brand | Forks or swaps a brand theme | Own palette, same structure |
 
 ## Document map
@@ -69,7 +69,7 @@ Light-mode page background is soft cream #FAF7F2; dark mode uses the warm black.
 
 - Brand: **ShaMallya**
 - Token namespace: `shamallya.`
-- Packages: `@shamallya/tokens`, `@shamallya/ui`
+- Packages: `@shamallya-ui/tokens`, `@shamallya-ui/components`
 
 ## Open questions for Shamala
 

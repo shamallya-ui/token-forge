@@ -12,8 +12,8 @@ A single DTCG-format token source is transformed by a build pipeline into per-pl
 |-------|----------------|--------------------|
 | Source | Authoring of tokens (W3C DTCG JSON) | `tokens/` in the repo |
 | Build | Validate, transform, emit | Style Dictionary pipeline |
-| Distribution | Ready-to-use outputs | `@shamallya/tokens` |
-| Components | Accessible UI built on tokens | `@shamallya/ui` |
+| Distribution | Ready-to-use outputs | `@shamallya-ui/tokens` |
+| Components | Accessible UI built on tokens | `@shamallya-ui/components` |
 | Showcase | Docs, live theming, visual tests | Storybook (or similar) on GitHub Pages |
 
 ## 2. Token tiers
@@ -80,7 +80,7 @@ Precedence: explicit user choice, then system preference, then brand default. Th
 | 2. Validate | DTCG JSON | Schema and reference check; naming lint | Pass/fail report |
 | 3. Transform | Validated tokens | Style Dictionary | Platform outputs |
 | 4. Contrast check | Semantic colour pairs | Contrast checker script | Pass/fail against AA targets |
-| 5. Package | Outputs | Package build | `@shamallya/tokens` |
+| 5. Package | Outputs | Package build | `@shamallya-ui/tokens` |
 | 6. Publish | Package, showcase | CI to registry and GitHub Pages | Versioned release |
 
 Outputs:
@@ -98,8 +98,8 @@ Principles: the DTCG file is the only hand-edited source; outputs are never edit
 
 | Framework | Basis | Package | Notes |
 |-----------|-------|---------|-------|
-| React | shadcn/ui | `@shamallya/ui` (React entry) | Copy-in model, themed via semantic tokens |
-| Svelte 5 | shadcn-svelte | `@shamallya/ui` (Svelte entry) | Needed for Vibgyor migration (ADR-0006) |
+| React | shadcn/ui | `@shamallya-ui/components` (React entry) | Copy-in model, themed via semantic tokens |
+| Svelte 5 | shadcn-svelte | `@shamallya-ui/components` (Svelte entry) | Needed for Vibgyor migration (ADR-0006) |
 | Framework-neutral | Lit web components | Later, optional | Evaluate after React/Svelte stabilise |
 
 Strategy: components consume only semantic and component tokens; behaviour and accessibility follow the underlying headless primitives; the React and Svelte variants share the same names, props semantics and token mapping.
@@ -256,8 +256,8 @@ Non-colour rule: any status meaning (especially red versus green) must also be e
 |----------------|----------|
 | `tokens/` | DTCG source files split by tier and category; brand-theme folders |
 | `build/` | Pipeline configuration, naming lint rules, contrast check configuration |
-| `packages/tokens` → `@shamallya/tokens` | Built outputs: CSS variables, Tailwind preset, resolved values |
-| `packages/ui` → `@shamallya/ui` | Component layer with React and Svelte 5 entries |
+| `packages/tokens` → `@shamallya-ui/tokens` | Built outputs: CSS variables, Tailwind preset, resolved values |
+| `packages/ui` → `@shamallya-ui/components` | Component layer with React and Svelte 5 entries |
 | `apps/showcase` | Storybook (or similar) site |
 | `docs/` | PRD, architecture, testing matrix, ideas, ADRs |
 | `.github/` | CI workflows, issue templates |
@@ -277,7 +277,7 @@ Sequence of a token change:
 | 4 | CI | Contrast and light/dark parity checks | AA pass/fail |
 | 5 | CI | Builds showcase, runs visual regression and cross-framework rendering tests | Reports |
 | 6 | Shamala | Reviews diffs; adds changelog entry; chooses semver bump | Release decision |
-| 7 | CI | Publishes `@shamallya/tokens`, `@shamallya/ui`, deploys showcase to GitHub Pages | Released |
+| 7 | CI | Publishes `@shamallya-ui/tokens`, `@shamallya-ui/components`, deploys showcase to GitHub Pages | Released |
 | 8 | App developer | Upgrades the package; reads the changelog and deprecation notes | App updated |
 
 Consumption flow:

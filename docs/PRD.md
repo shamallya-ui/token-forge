@@ -35,8 +35,8 @@ Version: 0.1 (Phase 1 draft) · Owner: Shamala · Brand: ShaMallya · Namespace:
 | FR-07 | Light and dark modes with full parity of semantic tokens | Must |
 | FR-08 | Swappable brand themes without changing component code | Must |
 | FR-09 | Build outputs: CSS variables, Tailwind preset, and at least one further platform output (later) | Must (CSS, Tailwind); Should (others) |
-| FR-10 | `@shamallya/tokens` package published for consumption | Must |
-| FR-11 | `@shamallya/ui` component package for React (shadcn/ui basis) and Svelte 5 (shadcn-svelte basis) | Must |
+| FR-10 | `@shamallya-ui/tokens` package published for consumption | Must |
+| FR-11 | `@shamallya-ui/components` component package for React (shadcn/ui basis) and Svelte 5 (shadcn-svelte basis) | Must |
 | FR-12 | Possible framework-neutral Lit web components later | Could |
 | FR-13 | Showcase site (Storybook or similar) on GitHub Pages with live light/dark and theme switching | Must |
 | FR-14 | Status UI never relies on colour alone (icon and label required) | Must |
@@ -123,7 +123,7 @@ Backgrounds: light mode is soft cream #FAF7F2; dark mode is warm black #1C1917. 
 | Q5 | ~~Primary colour~~ **RESOLVED**: blue is the default action colour | Done |
 | Q6 | Info shares blue with primary per the decision; should info use a distinct step or tint to tell it apart from primary actions? | Before semantic mapping |
 | Q7 | ~~Licence~~ **RESOLVED**: MIT. Public repository name still to be chosen | Done (name later) |
-| Q8 | Name availability, checked read-only on 2026-10-30: GitHub `shamallya` is not taken (HTTP 404); `@shamallya/tokens` does not exist on the npm registry (404), but the npm website blocked automated lookups (403), so scope ownership is unconfirmed; domains shamallya.com, .dev, .io, .design and .in returned NXDOMAIN (no DNS records, likely unregistered; a registrar search is needed to be sure). Nothing was registered. Shamala to claim names | Before public launch |
+| Q8 | Name availability, checked read-only on 2026-10-30: GitHub `shamallya` is not taken (HTTP 404); `@shamallya-ui/tokens` does not exist on the npm registry (404), but the npm website blocked automated lookups (403), so scope ownership is unconfirmed; domains shamallya.com, .dev, .io, .design and .in returned NXDOMAIN (no DNS records, likely unregistered; a registrar search is needed to be sure). Nothing was registered. Shamala to claim names | Before public launch |
 | Q9 | ~~Icon set~~ **RESOLVED**: Lucide (ADR-0008) | Done |
 | Q10 | ~~Dark surfaces~~ **RESOLVED**: warm black #1C1917 | Done |
 | Q11 | Browser baseline. **Recommended**: last 2 versions of Chrome, Edge, Firefox and Safari, plus iOS Safari 16.4 or later (matches what Tailwind 4 and Svelte 5 tooling expect and covers installed PWAs on iPhone). **CONFIRMED by Shamala 2026-10-30** | Done |
@@ -154,3 +154,7 @@ This PRD feeds README.md, architecture.md, testing-matrix.md, ideas.md and the A
 ## 13. Suggested ideas
 
 See [ideas.md](ideas.md) for the full list (brand ink with accent hierarchy, accent-hue limit, colour-blind-safe status, governance, density scale, theme switcher, one-page brand guide, case-study outline).
+
+## Update 2026-10-30: npm scope
+
+The npm organisation `shamallya` was unavailable, so Shamala created `shamallya-ui`. Packages: `@shamallya-ui/tokens` and `@shamallya-ui/components`. The token namespace stays `shamallya.` (ADR-0005).

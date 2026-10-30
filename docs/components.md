@@ -64,7 +64,7 @@ Framework basis follows architecture section 7 (shadcn/ui for React, shadcn-svel
 | V1-32 | Layout primitives | Page shell, responsive grid for day cards, stack, container, safe-area | Built on spacing tokens |
 | V1-33 | Install prompt (PWA pattern) | Install App | Pattern, not a heavy component |
 
-Patterns V1-29 and V1-30 are product-level; they ship as documented patterns first and are promoted to `@shamallya/ui` only if another app reuses them (see section 5).
+Patterns V1-29 and V1-30 are product-level; they ship as documented patterns first and are promoted to `@shamallya-ui/components` only if another app reuses them (see section 5).
 
 ## 3. V2 component additions (Konkani Meal Planner)
 

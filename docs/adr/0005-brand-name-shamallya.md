@@ -9,7 +9,7 @@ The project needs a memorable, personal, ownable identity separate from the work
 ## Decision
 - Brand: **ShaMallya** (from Shamala + Mallya, stylised ShaMallya).
 - Working/project name: Token Forge.
-- Technical identifiers are lowercase: token namespace `shamallya.`, npm scope `@shamallya`, packages `@shamallya/tokens` and `@shamallya/ui`.
+- Technical identifiers are lowercase: token namespace `shamallya.` (unchanged). The npm scope is `@shamallya-ui` because `shamallya` was unavailable on npm (2026-10-30), so the packages are `@shamallya-ui/tokens` and `@shamallya-ui/components`. The component package is named `components`, not `ui`, to avoid `@shamallya-ui/ui`.
 
 ## Consequences
 - One brand across tokens, packages, showcase and case study.
