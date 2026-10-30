@@ -1,0 +1,273 @@
+{
+  "shamallya": {
+    "primitive": {
+      "color": {
+        "blue": {
+          "50": {
+            "$value": "#F2F5FE",
+            "$type": "color"
+          },
+          "100": {
+            "$value": "#E2E9FD",
+            "$type": "color"
+          },
+          "200": {
+            "$value": "#C3D2FA",
+            "$type": "color"
+          },
+          "300": {
+            "$value": "#A2B8F7",
+            "$type": "color"
+          },
+          "400": {
+            "$value": "#7A9AF4",
+            "$type": "color",
+            "$description": "Dark-mode text step"
+          },
+          "500": {
+            "$value": "#1D4ED8",
+            "$type": "color",
+            "$description": "Brand anchor"
+          },
+          "600": {
+            "$value": "#1D46BB",
+            "$type": "color"
+          },
+          "700": {
+            "$value": "#1D3E9E",
+            "$type": "color"
+          },
+          "800": {
+            "$value": "#1D3478",
+            "$type": "color"
+          },
+          "900": {
+            "$value": "#1C2A55",
+            "$type": "color"
+          },
+          "950": {
+            "$value": "#1C233A",
+            "$type": "color"
+          },
+          "dark-fill": {
+            "$value": "#3863DD",
+            "$type": "color",
+            "$description": "Dark-mode fill: base lifted about 12% toward white"
+          }
+        },
+        "red": {
+          "50": {
+            "$value": "#FDF2ED",
+            "$type": "color"
+          },
+          "100": {
+            "$value": "#FAE2D7",
+            "$type": "color"
+          },
+          "200": {
+            "$value": "#F5C3AE",
+            "$type": "color"
+          },
+          "300": {
+            "$value": "#EFA180",
+            "$type": "color"
+          },
+          "400": {
+            "$value": "#E8794A",
+            "$type": "color",
+            "$description": "Dark-mode text step"
+          },
+          "500": {
+            "$value": "#B03608",
+            "$type": "color",
+            "$description": "Brand anchor"
+          },
+          "600": {
+            "$value": "#9A320A",
+            "$type": "color"
+          },
+          "700": {
+            "$value": "#842D0D",
+            "$type": "color"
+          },
+          "800": {
+            "$value": "#662810",
+            "$type": "color"
+          },
+          "900": {
+            "$value": "#4B2212",
+            "$type": "color"
+          },
+          "950": {
+            "$value": "#371E14",
+            "$type": "color"
+          },
+          "dark-fill": {
+            "$value": "#B94E26",
+            "$type": "color",
+            "$description": "Dark-mode fill: base lifted about 12% toward white"
+          }
+        },
+        "yellow": {
+          "50": {
+            "$value": "#FEF9EA",
+            "$type": "color"
+          },
+          "100": {
+            "$value": "#FCF2D1",
+            "$type": "color"
+          },
+          "200": {
+            "$value": "#F9E4A2",
+            "$type": "color"
+          },
+          "300": {
+            "$value": "#F6D46E",
+            "$type": "color"
+          },
+          "400": {
+            "$value": "#F2C230",
+            "$type": "color",
+            "$description": "Dark-mode text step"
+          },
+          "500": {
+            "$value": "#EAB308",
+            "$type": "color",
+            "$description": "Brand anchor"
+          },
+          "600": {
+            "$value": "#B8800B",
+            "$type": "color"
+          },
+          "700": {
+            "$value": "#854D0E",
+            "$type": "color",
+            "$description": "Text step for light surfaces (ochre)"
+          },
+          "800": {
+            "$value": "#663D11",
+            "$type": "color"
+          },
+          "900": {
+            "$value": "#4B3013",
+            "$type": "color"
+          },
+          "950": {
+            "$value": "#362615",
+            "$type": "color"
+          },
+          "dark-fill": {
+            "$value": "#EAB308",
+            "$type": "color",
+            "$description": "Dark-mode fill: unchanged"
+          }
+        },
+        "green": {
+          "50": {
+            "$value": "#F4F8ED",
+            "$type": "color"
+          },
+          "100": {
+            "$value": "#E6EFD8",
+            "$type": "color"
+          },
+          "200": {
+            "$value": "#CCDFB0",
+            "$type": "color"
+          },
+          "300": {
+            "$value": "#AFCD84",
+            "$type": "color"
+          },
+          "400": {
+            "$value": "#8DB84F",
+            "$type": "color",
+            "$description": "Dark-mode text step"
+          },
+          "500": {
+            "$value": "#3F6B0B",
+            "$type": "color",
+            "$description": "Brand anchor"
+          },
+          "600": {
+            "$value": "#3A5F0D",
+            "$type": "color"
+          },
+          "700": {
+            "$value": "#34520F",
+            "$type": "color"
+          },
+          "800": {
+            "$value": "#2E4211",
+            "$type": "color"
+          },
+          "900": {
+            "$value": "#273313",
+            "$type": "color"
+          },
+          "950": {
+            "$value": "#222815",
+            "$type": "color"
+          },
+          "dark-fill": {
+            "$value": "#567D28",
+            "$type": "color",
+            "$description": "Dark-mode fill: base lifted about 12% toward white"
+          }
+        },
+        "neutral": {
+          "50": {
+            "$value": "#FAF7F2",
+            "$type": "color",
+            "$description": "Cream, light page background"
+          },
+          "100": {
+            "$value": "#F1EDE6",
+            "$type": "color"
+          },
+          "200": {
+            "$value": "#E3DDD3",
+            "$type": "color"
+          },
+          "300": {
+            "$value": "#D3CCC1",
+            "$type": "color"
+          },
+          "400": {
+            "$value": "#A8A094",
+            "$type": "color"
+          },
+          "500": {
+            "$value": "#78716C",
+            "$type": "color"
+          },
+          "600": {
+            "$value": "#5C554F",
+            "$type": "color"
+          },
+          "700": {
+            "$value": "#44403C",
+            "$type": "color"
+          },
+          "800": {
+            "$value": "#2A2623",
+            "$type": "color"
+          },
+          "900": {
+            "$value": "#1C1917",
+            "$type": "color",
+            "$description": "Warm black, brand ink and dark page background"
+          },
+          "950": {
+            "$value": "#12100F",
+            "$type": "color"
+          }
+        },
+        "white": {
+          "$value": "#FFFFFF",
+          "$type": "color"
+        }
+      }
+    }
+  }
+}

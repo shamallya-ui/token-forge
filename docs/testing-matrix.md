@@ -163,3 +163,9 @@ Entry: source validates; naming lint passes. Exit for a release: all Must-level 
 ## 12. Documentation Updates
 
 When a requirement ID in the PRD changes, update the map in section 1 and the affected cases. New tokens categories require new naming cases.
+
+## 13. Implementation status (2026-10-30)
+
+Automated with `npm run check` (lint, build, contrast, then `node --test`): T-01 to T-12, N-01 and N-03 to N-12 (token validity and naming), C-01 to C-09, C-12, C-15, C-16, C-18 (contrast, including the 4.5:1 boundary using #767676 and #777777), P-01 to P-04, P-07, P-08 (parity), O-01 to O-06 and O-10 (output parity, determinism, package exports). 40 tests and 66 contrast pairs pass.
+
+Not yet automated: visual regression (V), cross-framework rendering (X), brand-theme swap (B), governance and release checks (G), non-colour status checks, Tailwind-in-a-real-app integration.

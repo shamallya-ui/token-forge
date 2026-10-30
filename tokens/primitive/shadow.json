@@ -1,0 +1,11 @@
+{
+  "shamallya": { "primitive": { "shadow": {
+    "$type": "shadow",
+    "0": { "$value": { "color": "#1C191700", "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "0px" } },
+    "1": { "$value": { "color": "#1C19171A", "offsetX": "0px", "offsetY": "1px", "blur": "2px", "spread": "0px" } },
+    "2": { "$value": { "color": "#1C191720", "offsetX": "0px", "offsetY": "2px", "blur": "6px", "spread": "0px" } },
+    "3": { "$value": { "color": "#1C191726", "offsetX": "0px", "offsetY": "6px", "blur": "16px", "spread": "-2px" } },
+    "4": { "$value": { "color": "#1C19172E", "offsetX": "0px", "offsetY": "12px", "blur": "28px", "spread": "-4px" } },
+    "5": { "$value": { "color": "#1C191738", "offsetX": "0px", "offsetY": "24px", "blur": "48px", "spread": "-8px" } }
+  } } }
+}

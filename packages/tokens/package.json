@@ -1,0 +1,15 @@
+{
+  "name": "@shamallya-ui/tokens",
+  "version": "0.1.0",
+  "description": "ShaMallya design tokens: CSS variables, Tailwind preset and resolved JSON, built from W3C DTCG sources.",
+  "license": "MIT",
+  "type": "module",
+  "files": ["dist"],
+  "exports": {
+    "./css": "./dist/tokens.css",
+    "./tailwind": { "import": "./dist/tailwind-preset.js", "require": "./dist/tailwind-preset.cjs" },
+    "./resolved": "./dist/tokens.resolved.json"
+  },
+  "repository": { "type": "git", "url": "git+https://github.com/shamallya-ui/token-forge.git", "directory": "packages/tokens" },
+  "publishConfig": { "access": "public" }
+}

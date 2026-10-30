@@ -53,7 +53,8 @@ Pattern: `shamallya.<tier>.<category>.<group>.<item>.<state-or-step>`, all lower
 | Tier segment | `primitive`, `semantic`, or `component` immediately after the namespace |
 | Category segment | `color`, `font`, `space`, `radius`, `shadow`, `motion`, `z` |
 | Case | Lowercase, kebab-case inside segments; no camelCase, no spaces |
-| Steps | Colour steps are the numbers 50, 100, 200 to 900, 950 |
+| Component tier | `shamallya.component.<component>.<property>` (for example `shamallya.component.button.radius`); the third segment is the component name, not a category |
+| Steps | Colour steps are 50, 100, 200 to 900, 950, plus `dark-fill` (the dark-mode fill of a hue). Neutral and hue ramps only; `white` has no step |
 | States | `default`, `hover`, `active`, `disabled`, `focus`, `selected` |
 | Forbidden words | Role names such as admin, broker, customer; any literal colour name in semantic or component tokens (use roles, not "blue") |
 | Prefixed outputs | CSS variables take the namespace with hyphens; Tailwind keys follow the semantic names |
@@ -152,24 +153,24 @@ The full prioritised list, drawn from Vibgyor and the Konkani Meal Planner, is i
 
 | Semantic token | Light mode points to | Dark mode points to |
 |----------------|---------------------|---------------------|
-| surface.default | cream #FAF7F2 | warm black #1C1917 (neutral 950) |
-| surface.raised | white | neutral 900 |
-| surface.sunken | neutral 100 | black (neutral 950 or darker) |
-| text.default | neutral 950 | neutral 50 |
+| surface.default | cream #FAF7F2 (neutral 50) | warm black #1C1917 (neutral 900) |
+| surface.raised | white | neutral 800 |
+| surface.sunken | neutral 100 | neutral 950 |
+| text.default | neutral 900 | neutral 50 |
 | text.muted | neutral 700 | neutral 300 |
 | text.disabled | neutral 400 | neutral 600 |
-| border.default | neutral 300 | neutral 700 |
-| border.strong | neutral 500 | neutral 500 |
-| primary.default / hover / active | blue 600 / 700 / 800 | blue 500 / 400 / 300 |
-| primary.on | white | neutral 950 |
-| info.default / subtle | blue 600 / blue 50 | blue 400 / blue 950 |
-| danger.default / subtle | red 600 / red 50 | red 400 / red 950 |
-| warning.default / subtle | yellow 400 or 500 / yellow 50 | yellow 400 / yellow 950 |
-| warning.on | neutral 950 | neutral 950 |
-| success.default / subtle | green 700 / green 50 | green 400 / green 950 |
-| focus.ring | blue 600 | blue 400 |
+| border.default | neutral 200 (decorative dividers only) | neutral 800 |
+| border.strong | neutral 500 (control borders, at least 3:1) | neutral 400 |
+| primary.default / hover / active | blue 500 / 600 / 700 | blue dark-fill / 400 / 300 |
+| primary.on, primary.text | white, blue 500 | white, blue 400 |
+| info.default / subtle / text | blue 500 / blue 50 / blue 500 | blue dark-fill / blue 950 / blue 400 |
+| danger.default / subtle / text | red 500 / red 50 / red 500 | red dark-fill / red 950 / red 400 |
+| warning.default / subtle / text | yellow 500 / yellow 50 / yellow 700 (ochre) | yellow 500 / yellow 950 / yellow 500 |
+| warning.on | neutral 900 | neutral 900 |
+| success.default / subtle / text | green 500 / green 50 / green 500 | green dark-fill / green 950 / green 400 |
+| focus.ring | blue 500 | blue 400 |
 
-Base hex values are decided (section 9.5); the step-by-step mapping above remains a proposal until the ramps are generated and the contrast tests pass. Blue is the default action colour.
+The mapping above is implemented in `tokens/semantic/color-light.json` and `color-dark.json` and verified by `npm run contrast` (66 pairs, all passing). Blue is the default action colour.
 
 ### 9.5 Decided palette: direction B, "warm editorial", revision 2 (ADR-0007)
 
@@ -308,3 +309,18 @@ Semver for the packages (breaking token rename/removal is a major); changelog on
 ## 15. Testing and Documentation Updates
 
 Testing: [testing-matrix.md](testing-matrix.md). Any change to naming, tiers or palette roles must update this document, the matrix and the relevant ADR.
+
+## 16. Implementation status (Phase 2, started 2026-10-30)
+
+| Item | Status |
+|------|--------|
+| DTCG sources in `tokens/` (primitive, semantic light/dark/shared, component) | Done: 191 tokens |
+| Ramp generator (`npm run ramps`) from the decided anchors | Done |
+| Validation and naming lint (`npm run lint`) | Done |
+| Style Dictionary build (`npm run build`): `tokens.css`, `tailwind-preset.js/.cjs`, `tokens.resolved.json` | Done |
+| Contrast job (`npm run contrast`) | Done: 66 of 66 pairs pass |
+| Tests (`npm test`, node:test): validity, naming, contrast, parity, determinism | Done: 40 tests |
+| CI (`.github/workflows/ci.yml`) | Added |
+| Not yet: npm publish, `@shamallya-ui/components`, showcase, visual regression, other platforms | Later phases |
+
+Notes: the Tailwind preset targets Tailwind 3 style presets (and can be loaded in Tailwind 4 with the config compatibility directive); dark mode is by `data-theme="dark"` or the system preference unless `data-theme="light"` is set.

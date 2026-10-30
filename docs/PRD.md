@@ -138,7 +138,7 @@ Resolved: hex values, logo, typography, icons, licence (MIT), V1 components. Def
 | Phase | Output |
 |-------|--------|
 | 1 | Documentation (this set) |
-| 2 | Token source and build pipeline, CSS and Tailwind outputs |
+| 2 | Token source and build pipeline, CSS and Tailwind outputs (started 2026-10-30; sources, build, lint, contrast and tests done) |
 | 3 | Component layer for Svelte 5 and React, showcase site |
 | 4 | Adoption in Vibgyor and a second app, governance in practice, case study |
 | Later | Lit web components, extra platform outputs |

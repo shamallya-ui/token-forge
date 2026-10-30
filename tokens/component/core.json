@@ -1,0 +1,78 @@
+{
+  "shamallya": {
+    "component": {
+      "button": {
+        "primary": {
+          "background": {
+            "$type": "color",
+            "$value": "{shamallya.semantic.color.primary.default}"
+          },
+          "background-hover": {
+            "$type": "color",
+            "$value": "{shamallya.semantic.color.primary.hover}"
+          },
+          "background-active": {
+            "$type": "color",
+            "$value": "{shamallya.semantic.color.primary.active}"
+          },
+          "text": {
+            "$type": "color",
+            "$value": "{shamallya.semantic.color.primary.on}"
+          }
+        },
+        "radius": {
+          "$type": "dimension",
+          "$value": "{shamallya.semantic.radius.control}"
+        },
+        "padding-x": {
+          "$type": "dimension",
+          "$value": "{shamallya.semantic.space.inset.md}"
+        },
+        "min-height": {
+          "$type": "dimension",
+          "$value": "{shamallya.semantic.space.touch-target}"
+        }
+      },
+      "input": {
+        "background": {
+          "$type": "color",
+          "$value": "{shamallya.semantic.color.surface.raised}"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{shamallya.semantic.color.text.default}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{shamallya.semantic.color.border.strong}"
+        },
+        "focus-ring": {
+          "$type": "color",
+          "$value": "{shamallya.semantic.color.focus.ring}"
+        },
+        "radius": {
+          "$type": "dimension",
+          "$value": "{shamallya.semantic.radius.control}"
+        }
+      },
+      "card": {
+        "background": {
+          "$type": "color",
+          "$value": "{shamallya.semantic.color.surface.raised}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{shamallya.semantic.color.border.default}"
+        },
+        "radius": {
+          "$type": "dimension",
+          "$value": "{shamallya.semantic.radius.card}"
+        },
+        "shadow": {
+          "$type": "shadow",
+          "$value": "{shamallya.semantic.shadow.raised}"
+        }
+      }
+    }
+  }
+}

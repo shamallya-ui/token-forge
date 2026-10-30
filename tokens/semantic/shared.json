@@ -1,0 +1,54 @@
+{
+  "shamallya": { "semantic": {
+    "space": {
+      "$type": "dimension",
+      "inset": {
+        "sm": { "$value": "{shamallya.primitive.space.2}" },
+        "md": { "$value": "{shamallya.primitive.space.4}" },
+        "lg": { "$value": "{shamallya.primitive.space.6}" }
+      },
+      "stack": {
+        "sm": { "$value": "{shamallya.primitive.space.2}" },
+        "md": { "$value": "{shamallya.primitive.space.4}" },
+        "lg": { "$value": "{shamallya.primitive.space.8}" }
+      },
+      "gap": {
+        "sm": { "$value": "{shamallya.primitive.space.2}" },
+        "md": { "$value": "{shamallya.primitive.space.4}" }
+      },
+      "section": { "$value": "{shamallya.primitive.space.12}" },
+      "touch-target": { "$value": "2.75rem", "$description": "Minimum touch target, about 44px" }
+    },
+    "radius": {
+      "$type": "dimension",
+      "control": { "$value": "{shamallya.primitive.radius.md}" },
+      "card": { "$value": "{shamallya.primitive.radius.lg}" },
+      "pill": { "$value": "{shamallya.primitive.radius.full}" }
+    },
+    "shadow": {
+      "$type": "shadow",
+      "raised": { "$value": "{shamallya.primitive.shadow.2}" },
+      "overlay": { "$value": "{shamallya.primitive.shadow.3}" },
+      "modal": { "$value": "{shamallya.primitive.shadow.4}" }
+    },
+    "motion": {
+      "transition-fast": { "$type": "duration", "$value": "{shamallya.primitive.motion.duration.fast}" },
+      "transition-base": { "$type": "duration", "$value": "{shamallya.primitive.motion.duration.base}" },
+      "easing-standard": { "$type": "cubicBezier", "$value": "{shamallya.primitive.motion.easing.standard}" }
+    },
+    "z": {
+      "$type": "number",
+      "base": { "$value": "{shamallya.primitive.z.0}" },
+      "dropdown": { "$value": "{shamallya.primitive.z.10}" },
+      "sticky": { "$value": "{shamallya.primitive.z.20}" },
+      "overlay": { "$value": "{shamallya.primitive.z.30}" },
+      "modal": { "$value": "{shamallya.primitive.z.40}" },
+      "toast": { "$value": "{shamallya.primitive.z.50}" }
+    },
+    "font": {
+      "heading": { "$type": "fontFamily", "$value": "{shamallya.primitive.font.family.heading}" },
+      "body": { "$type": "fontFamily", "$value": "{shamallya.primitive.font.family.body}" },
+      "code": { "$type": "fontFamily", "$value": "{shamallya.primitive.font.family.mono}" }
+    }
+  } }
+}

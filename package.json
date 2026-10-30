@@ -1,0 +1,21 @@
+{
+  "name": "token-forge",
+  "private": true,
+  "version": "0.0.0",
+  "description": "ShaMallya Token Forge: design tokens (W3C DTCG) built with Style Dictionary.",
+  "license": "MIT",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "ramps": "node build/generate-ramps.mjs",
+    "lint": "node build/lint.mjs",
+    "build": "node build/build.mjs",
+    "contrast": "node build/contrast.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm run lint && npm run build && npm run contrast && npm test"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.4.0"
+  }
+}
