@@ -2,7 +2,11 @@
 
 **Token Forge** is a free, open-source, stack-agnostic design-token and component-library project. Its brand is **ShaMallya** (from Shamala + Mallya, stylised *ShaMallya*). One source of truth for colour, type, spacing and motion gives every app Shamala builds the same look and feel, whatever framework it uses.
 
-> Status: Phase 1 (documentation) is done and Phase 2 has started: the token sources, build, lint, contrast check and tests exist. Components, the showcase and the first npm publish come next.
+> Status: Phase 1 (documentation) is done and Phase 2 has started: the token sources, build, lint, contrast check and tests exist. The first npm release (0.1.0) is out. Components and the showcase come next.
+
+## Install the tokens
+
+Published on npm as `@shamallya-ui/tokens` (0.1.0). Install with `npm install @shamallya-ui/tokens`, then import `@shamallya-ui/tokens/css` for CSS variables or use `@shamallya-ui/tokens/tailwind` as a Tailwind preset.
 
 ## Quick start
 
