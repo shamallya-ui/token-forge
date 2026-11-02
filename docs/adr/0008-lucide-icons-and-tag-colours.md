@@ -33,6 +33,10 @@ The deployed Vibgyor site uses emoji as status markers and coloured tags for sub
 - Because red-, green- and amber-family tags exist, status meaning must always come from icon and label, never from a tag's hue (reinforces the non-colour rule).
 - Shamala decided the tag palette is **warmed to match palette B** and that **the tokens lead and the apps follow**: Vibgyor's current tag colours are not binding and will be replaced by these tokens when it adopts the library.
 
+## Implementation status
+
+Implemented in `@shamallya-ui/tokens` 0.2.0 as `semantic.color.tag.<hue>.*` (values below unchanged; the dark neutral border #3B3631 was chosen at implementation).
+
 ## Warmed tag palette (confirmed by Shamala; replaces the app's current colours)
 
 Built by mixing each hue family with the cream (#FAF7F2) in light mode and the warm black (#1C1917) in dark mode. Contrast computed in prose below; the Phase 2 job is authoritative. Policy: text at least 5.5:1; these all clear 7:1.

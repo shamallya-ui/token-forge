@@ -318,10 +318,20 @@ Testing: [testing-matrix.md](testing-matrix.md). Any change to naming, tiers or 
 | Ramp generator (`npm run ramps`) from the decided anchors | Done |
 | Validation and naming lint (`npm run lint`) | Done |
 | Style Dictionary build (`npm run build`): `tokens.css`, `tailwind-preset.js/.cjs`, `tokens.resolved.json` | Done |
-| Contrast job (`npm run contrast`) | Done: 66 of 66 pairs pass |
-| Tests (`npm test`, node:test): validity, naming, contrast, parity, determinism | Done: 40 tests |
+| Contrast job (`npm run contrast`) | Done: 98 of 98 pairs pass (0.2.0) |
+| Tests (`npm test`, node:test): validity, naming, contrast, parity, determinism | Done: 44 tests |
 | CI (`.github/workflows/ci.yml`) | Added |
 | `@shamallya-ui/tokens` 0.1.0 published to npm (2026-10-30) and verified by a clean install | Done |
 | Not yet: `@shamallya-ui/components`, showcase, visual regression, other platforms | Later phases |
 
 Notes: the Tailwind preset targets Tailwind 3 style presets (and can be loaded in Tailwind 4 with the config compatibility directive); dark mode is by `data-theme="dark"` or the system preference unless `data-theme="light"` is set.
+
+## 17. Tokens added in 0.2.0
+
+| Token group | Purpose | Light / dark source |
+|-------------|---------|---------------------|
+| `semantic.color.text.subtle` | Third text level (tertiary text) | neutral 600 / neutral 400 (about 6.3 to 7.3:1 light, 5.8 to 7.3:1 dark) |
+| `semantic.color.highlight.*` (default, subtle, on, text) | Warm decorative accent, not a status | yellow 500 / 50 / ink / ochre 700 (light); yellow 500 / 950 / ink / yellow 500 (dark) |
+| `semantic.color.tag.<hue>.{text,background,border}` | Categorical tags (subjects, categories); coloured or neutral | The warmed palette in ADR-0008 via `primitive.color.tag.<hue>.<slot>` |
+
+Naming exception: colour words are allowed only as the hue segment under `semantic.color.tag`. Tags never carry status meaning by colour alone. See CHANGELOG.md.

@@ -28,6 +28,10 @@
           "disabled": {
             "$value": "{shamallya.primitive.color.neutral.600}",
             "$type": "color"
+          },
+          "subtle": {
+            "$value": "{shamallya.primitive.color.neutral.400}",
+            "$type": "color"
           }
         },
         "border": {
@@ -138,6 +142,152 @@
           "ring": {
             "$value": "{shamallya.primitive.color.blue.400}",
             "$type": "color"
+          }
+        },
+        "highlight": {
+          "default": {
+            "$value": "{shamallya.primitive.color.yellow.500}",
+            "$type": "color"
+          },
+          "subtle": {
+            "$value": "{shamallya.primitive.color.yellow.950}",
+            "$type": "color"
+          },
+          "on": {
+            "$value": "{shamallya.primitive.color.neutral.900}",
+            "$type": "color"
+          },
+          "text": {
+            "$value": "{shamallya.primitive.color.yellow.500}",
+            "$type": "color"
+          }
+        },
+        "tag": {
+          "blue": {
+            "text": {
+              "$value": "{shamallya.primitive.color.tag.blue.dark-text}",
+              "$type": "color"
+            },
+            "background": {
+              "$value": "{shamallya.primitive.color.tag.blue.dark-background}",
+              "$type": "color"
+            },
+            "border": {
+              "$value": "{shamallya.primitive.color.tag.blue.dark-border}",
+              "$type": "color"
+            }
+          },
+          "amber": {
+            "text": {
+              "$value": "{shamallya.primitive.color.tag.amber.dark-text}",
+              "$type": "color"
+            },
+            "background": {
+              "$value": "{shamallya.primitive.color.tag.amber.dark-background}",
+              "$type": "color"
+            },
+            "border": {
+              "$value": "{shamallya.primitive.color.tag.amber.dark-border}",
+              "$type": "color"
+            }
+          },
+          "green": {
+            "text": {
+              "$value": "{shamallya.primitive.color.tag.green.dark-text}",
+              "$type": "color"
+            },
+            "background": {
+              "$value": "{shamallya.primitive.color.tag.green.dark-background}",
+              "$type": "color"
+            },
+            "border": {
+              "$value": "{shamallya.primitive.color.tag.green.dark-border}",
+              "$type": "color"
+            }
+          },
+          "purple": {
+            "text": {
+              "$value": "{shamallya.primitive.color.tag.purple.dark-text}",
+              "$type": "color"
+            },
+            "background": {
+              "$value": "{shamallya.primitive.color.tag.purple.dark-background}",
+              "$type": "color"
+            },
+            "border": {
+              "$value": "{shamallya.primitive.color.tag.purple.dark-border}",
+              "$type": "color"
+            }
+          },
+          "orange": {
+            "text": {
+              "$value": "{shamallya.primitive.color.tag.orange.dark-text}",
+              "$type": "color"
+            },
+            "background": {
+              "$value": "{shamallya.primitive.color.tag.orange.dark-background}",
+              "$type": "color"
+            },
+            "border": {
+              "$value": "{shamallya.primitive.color.tag.orange.dark-border}",
+              "$type": "color"
+            }
+          },
+          "red": {
+            "text": {
+              "$value": "{shamallya.primitive.color.tag.red.dark-text}",
+              "$type": "color"
+            },
+            "background": {
+              "$value": "{shamallya.primitive.color.tag.red.dark-background}",
+              "$type": "color"
+            },
+            "border": {
+              "$value": "{shamallya.primitive.color.tag.red.dark-border}",
+              "$type": "color"
+            }
+          },
+          "pink": {
+            "text": {
+              "$value": "{shamallya.primitive.color.tag.pink.dark-text}",
+              "$type": "color"
+            },
+            "background": {
+              "$value": "{shamallya.primitive.color.tag.pink.dark-background}",
+              "$type": "color"
+            },
+            "border": {
+              "$value": "{shamallya.primitive.color.tag.pink.dark-border}",
+              "$type": "color"
+            }
+          },
+          "indigo": {
+            "text": {
+              "$value": "{shamallya.primitive.color.tag.indigo.dark-text}",
+              "$type": "color"
+            },
+            "background": {
+              "$value": "{shamallya.primitive.color.tag.indigo.dark-background}",
+              "$type": "color"
+            },
+            "border": {
+              "$value": "{shamallya.primitive.color.tag.indigo.dark-border}",
+              "$type": "color"
+            }
+          },
+          "neutral": {
+            "text": {
+              "$value": "{shamallya.primitive.color.tag.neutral.dark-text}",
+              "$type": "color"
+            },
+            "background": {
+              "$value": "{shamallya.primitive.color.tag.neutral.dark-background}",
+              "$type": "color"
+            },
+            "border": {
+              "$value": "{shamallya.primitive.color.tag.neutral.dark-border}",
+              "$type": "color"
+            }
           }
         }
       }

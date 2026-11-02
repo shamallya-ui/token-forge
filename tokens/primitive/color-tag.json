@@ -1,0 +1,245 @@
+{
+  "shamallya": {
+    "primitive": {
+      "color": {
+        "tag": {
+          "blue": {
+            "light-text": {
+              "$value": "#142A5D",
+              "$type": "color"
+            },
+            "light-background": {
+              "$value": "#DFE5F5",
+              "$type": "color"
+            },
+            "light-border": {
+              "$value": "#C3CEE7",
+              "$type": "color"
+            },
+            "dark-text": {
+              "$value": "#BACBF4",
+              "$type": "color"
+            },
+            "dark-background": {
+              "$value": "#202639",
+              "$type": "color"
+            },
+            "dark-border": {
+              "$value": "#313D5B",
+              "$type": "color"
+            }
+          },
+          "amber": {
+            "light-text": {
+              "$value": "#5D4214",
+              "$type": "color"
+            },
+            "light-background": {
+              "$value": "#F8EEDB",
+              "$type": "color"
+            },
+            "light-border": {
+              "$value": "#EADBC0",
+              "$type": "color"
+            },
+            "dark-text": {
+              "$value": "#F5DEB9",
+              "$type": "color"
+            },
+            "dark-background": {
+              "$value": "#3B2F1E",
+              "$type": "color"
+            },
+            "dark-border": {
+              "$value": "#5C4C2F",
+              "$type": "color"
+            }
+          },
+          "green": {
+            "light-text": {
+              "$value": "#205D14",
+              "$type": "color"
+            },
+            "light-background": {
+              "$value": "#E3F7DB",
+              "$type": "color"
+            },
+            "light-border": {
+              "$value": "#CAE9C0",
+              "$type": "color"
+            },
+            "dark-text": {
+              "$value": "#C4F4B9",
+              "$type": "color"
+            },
+            "dark-background": {
+              "$value": "#24391E",
+              "$type": "color"
+            },
+            "dark-border": {
+              "$value": "#385C2F",
+              "$type": "color"
+            }
+          },
+          "purple": {
+            "light-text": {
+              "$value": "#3E145D",
+              "$type": "color"
+            },
+            "light-background": {
+              "$value": "#EEDEF5",
+              "$type": "color"
+            },
+            "light-border": {
+              "$value": "#DAC2E7",
+              "$type": "color"
+            },
+            "dark-text": {
+              "$value": "#DCBAF4",
+              "$type": "color"
+            },
+            "dark-background": {
+              "$value": "#2F1E39",
+              "$type": "color"
+            },
+            "dark-border": {
+              "$value": "#4A305B",
+              "$type": "color"
+            }
+          },
+          "orange": {
+            "light-text": {
+              "$value": "#5D2C14",
+              "$type": "color"
+            },
+            "light-background": {
+              "$value": "#F8E6DB",
+              "$type": "color"
+            },
+            "light-border": {
+              "$value": "#EACFC0",
+              "$type": "color"
+            },
+            "dark-text": {
+              "$value": "#F5CDB9",
+              "$type": "color"
+            },
+            "dark-background": {
+              "$value": "#3B271E",
+              "$type": "color"
+            },
+            "dark-border": {
+              "$value": "#5C3F2F",
+              "$type": "color"
+            }
+          },
+          "red": {
+            "light-text": {
+              "$value": "#5D1A14",
+              "$type": "color"
+            },
+            "light-background": {
+              "$value": "#F8E0DB",
+              "$type": "color"
+            },
+            "light-border": {
+              "$value": "#EAC6C0",
+              "$type": "color"
+            },
+            "dark-text": {
+              "$value": "#F5BEB9",
+              "$type": "color"
+            },
+            "dark-background": {
+              "$value": "#3B201E",
+              "$type": "color"
+            },
+            "dark-border": {
+              "$value": "#5C342F",
+              "$type": "color"
+            }
+          },
+          "pink": {
+            "light-text": {
+              "$value": "#5D1432",
+              "$type": "color"
+            },
+            "light-background": {
+              "$value": "#F8DEE6",
+              "$type": "color"
+            },
+            "light-border": {
+              "$value": "#EAC2D0",
+              "$type": "color"
+            },
+            "dark-text": {
+              "$value": "#F5BAD1",
+              "$type": "color"
+            },
+            "dark-background": {
+              "$value": "#3B1E28",
+              "$type": "color"
+            },
+            "dark-border": {
+              "$value": "#5C3042",
+              "$type": "color"
+            }
+          },
+          "indigo": {
+            "light-text": {
+              "$value": "#1D145D",
+              "$type": "color"
+            },
+            "light-background": {
+              "$value": "#E3DEF5",
+              "$type": "color"
+            },
+            "light-border": {
+              "$value": "#C9C2E7",
+              "$type": "color"
+            },
+            "dark-text": {
+              "$value": "#C2BAF4",
+              "$type": "color"
+            },
+            "dark-background": {
+              "$value": "#231E39",
+              "$type": "color"
+            },
+            "dark-border": {
+              "$value": "#37305B",
+              "$type": "color"
+            }
+          },
+          "neutral": {
+            "light-text": {
+              "$value": "#44403C",
+              "$type": "color"
+            },
+            "light-background": {
+              "$value": "#F1EDE6",
+              "$type": "color"
+            },
+            "light-border": {
+              "$value": "#E3DDD3",
+              "$type": "color"
+            },
+            "dark-text": {
+              "$value": "#E7E2DA",
+              "$type": "color"
+            },
+            "dark-background": {
+              "$value": "#2A2623",
+              "$type": "color"
+            },
+            "dark-border": {
+              "$value": "#3B3631",
+              "$type": "color",
+              "$description": "Chosen here; ADR-0008 left it open"
+            }
+          }
+        }
+      }
+    }
+  }
+}

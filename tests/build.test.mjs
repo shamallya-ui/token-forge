@@ -91,3 +91,23 @@ test('O-10: the package exports point at files that exist', () => {
   const targets = [pkg.exports['./css'], pkg.exports['./tailwind'].import, pkg.exports['./tailwind'].require, pkg.exports['./resolved']];
   for (const t of targets) assert.ok(readFileSync(fileURLToPath(new URL(`../packages/tokens/${t.replace('./', '')}`, import.meta.url))).length > 0, t);
 });
+
+test('0.2.0: text.subtle, highlight and tag tokens exist in both modes and in the Tailwind preset', async () => {
+  const S = (n) => `shamallya.semantic.color.${n}`;
+  for (const mode of ['light', 'dark']) {
+    for (const n of ['text.subtle', 'highlight.default', 'highlight.text', 'tag.blue.text', 'tag.neutral.background', 'tag.indigo.border']) {
+      assert.match(resolved[mode][S(n)], /^#[0-9A-Fa-f]{6}$/, `${mode} ${n}`);
+    }
+  }
+  const mod = (await import(dist('tailwind-preset.js'))).default;
+  assert.ok(mod.theme.extend.colors.tag.purple.background.includes('semantic-color-tag-purple-background'));
+  assert.ok(mod.theme.extend.colors.highlight.DEFAULT.includes('semantic-color-highlight-default'));
+  assert.ok(mod.theme.extend.colors.text.subtle.includes('semantic-color-text-subtle'));
+});
+
+test('0.2.0: the confirmed warmed tag values are unchanged (ADR-0008)', () => {
+  const P = 'shamallya.primitive.color.tag.';
+  assert.equal(resolved.light[`${P}blue.light-text`], '#142A5D');
+  assert.equal(resolved.light[`${P}green.light-background`], '#E3F7DB');
+  assert.equal(resolved.dark[`${P}red.dark-text`], '#F5BEB9');
+});

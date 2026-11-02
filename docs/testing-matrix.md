@@ -166,6 +166,6 @@ When a requirement ID in the PRD changes, update the map in section 1 and the af
 
 ## 13. Implementation status (2026-10-30)
 
-Automated with `npm run check` (lint, build, contrast, then `node --test`): T-01 to T-12, N-01 and N-03 to N-12 (token validity and naming), C-01 to C-09, C-12, C-15, C-16, C-18 (contrast, including the 4.5:1 boundary using #767676 and #777777), P-01 to P-04, P-07, P-08 (parity), O-01 to O-06 and O-10 (output parity, determinism, package exports). 40 tests and 66 contrast pairs pass.
+Automated with `npm run check` (lint, build, contrast, then `node --test`): T-01 to T-12, N-01 and N-03 to N-12 (token validity and naming), C-01 to C-09, C-12, C-15, C-16, C-18 (contrast, including the 4.5:1 boundary using #767676 and #777777), P-01 to P-04, P-07, P-08 (parity), O-01 to O-06 and O-10 (output parity, determinism, package exports). 44 tests and 98 contrast pairs pass (0.2.0 added tests for tag naming, the new tokens and the confirmed tag values).
 
 Not yet automated: visual regression (V), cross-framework rendering (X), brand-theme swap (B), governance and release checks (G), non-colour status checks, Tailwind-in-a-real-app integration.

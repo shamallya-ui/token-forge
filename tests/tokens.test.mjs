@@ -140,3 +140,17 @@ test('flatten inherits $type from groups', () => {
   const t = flatten(prim({ z: { $type: 'number', 0: { $value: 1 } } }));
   assert.equal(t[0].type, 'number');
 });
+
+test('N-13: tag colours may be named by hue, but only in semantic.color.tag', () => {
+  const tag = (hue) => ({ shamallya: { semantic: { color: { tag: { [hue]: { text: { $type: 'color', $value: '#142A5D' } } } } } } });
+  assert.deepEqual(lintNames(set(tag('blue'), 'tokens/semantic/x.json')), []);
+  const other = { shamallya: { semantic: { color: { badge: { blue: { text: { $type: 'color', $value: '#142A5D' } } } } } } };
+  assert.ok(has(lintNames(set(other, 'tokens/semantic/x.json')), 'roles, not colour words'));
+});
+
+test('N-14: tag primitives need a known hue and slot', () => {
+  const prim = (hue, slot) => ({ shamallya: { primitive: { color: { tag: { [hue]: { [slot]: { $type: 'color', $value: '#142A5D' } } } } } } });
+  assert.deepEqual(lintNames(set(prim('blue', 'light-text'))), []);
+  assert.ok(has(lintNames(set(prim('teal', 'light-text'))), 'unknown tag hue'));
+  assert.ok(has(lintNames(set(prim('blue', 'text'))), 'tag slot'));
+});

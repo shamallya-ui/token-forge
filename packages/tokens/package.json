@@ -1,6 +1,6 @@
 {
   "name": "@shamallya-ui/tokens",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "ShaMallya design tokens: CSS variables, Tailwind preset and resolved JSON, built from W3C DTCG sources.",
   "license": "MIT",
   "type": "module",

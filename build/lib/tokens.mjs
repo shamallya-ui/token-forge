@@ -7,6 +7,8 @@ export const CATEGORIES = ['color', 'font', 'space', 'radius', 'shadow', 'motion
 export const TYPES = ['color', 'dimension', 'duration', 'cubicBezier', 'number', 'fontFamily', 'fontWeight', 'shadow'];
 export const COLOR_STEPS = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950', 'dark-fill'];
 export const HUES = ['blue', 'red', 'yellow', 'green', 'neutral'];
+export const TAG_HUES = ['blue', 'amber', 'green', 'purple', 'orange', 'red', 'pink', 'indigo', 'neutral'];
+export const TAG_SLOTS = ['light-text', 'light-background', 'light-border', 'dark-text', 'dark-background', 'dark-border'];
 export const MAX_ALIAS_DEPTH = 4;
 export const MAX_SEGMENTS = 7;
 const FORBIDDEN_WORDS = ['admin', 'broker', 'customer'];
@@ -153,10 +155,16 @@ export function lintNames(tokens) {
       if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(seg)) errors.push(`${name}: segment "${seg}" must be lowercase kebab-case`);
       if (FORBIDDEN_WORDS.some((w) => seg.includes(w))) errors.push(`${name}: segment "${seg}" contains a forbidden role word`);
     }
-    if ((s[1] === 'semantic' || s[1] === 'component') && s.slice(3).some((seg) => COLOUR_WORDS.includes(seg))) {
+    // Categorical tag colours are named by hue on purpose (semantic.color.tag.<hue>); only that segment is exempt.
+    const colourCheck = s[1] === 'semantic' && s[2] === 'color' && s[3] === 'tag' ? s.slice(3).filter((_, i) => i !== 1) : s.slice(3);
+    if ((s[1] === 'semantic' || s[1] === 'component') && colourCheck.some((seg) => COLOUR_WORDS.includes(seg))) {
       errors.push(`${name}: semantic and component names must use roles, not colour words`);
     }
-    if (s[1] === 'primitive' && s[2] === 'color' && s[3] !== 'white') {
+    if (s[1] === 'primitive' && s[2] === 'color' && s[3] === 'tag') {
+      if (!TAG_HUES.includes(s[4] ?? '')) errors.push(`${name}: unknown tag hue "${s[4]}"`);
+      if (!TAG_SLOTS.includes(s[5] ?? '')) errors.push(`${name}: tag slot "${s[5]}" is not one of ${TAG_SLOTS.join(', ')}`);
+      if (s.length !== 6) errors.push(`${name}: tag primitives are shamallya.primitive.color.tag.<hue>.<slot>`);
+    } else if (s[1] === 'primitive' && s[2] === 'color' && s[3] !== 'white') {
       if (!HUES.includes(s[3])) errors.push(`${name}: unknown hue "${s[3]}"`);
       else if (!COLOR_STEPS.includes(s[4] ?? '')) errors.push(`${name}: colour step "${s[4]}" is not one of ${COLOR_STEPS.join(', ')}`);
     }
