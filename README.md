@@ -6,7 +6,7 @@
 
 ## Install the tokens
 
-Published on npm as `@shamallya-ui/tokens` (0.1.0; 0.2.0 is prepared, see CHANGELOG.md). Install with `npm install @shamallya-ui/tokens`, then import `@shamallya-ui/tokens/css` for CSS variables or use `@shamallya-ui/tokens/tailwind` as a Tailwind preset.
+Published on npm as `@shamallya-ui/tokens` (latest 0.2.0, see CHANGELOG.md). Install with `npm install @shamallya-ui/tokens`, then import `@shamallya-ui/tokens/css` for CSS variables or use `@shamallya-ui/tokens/tailwind` as a Tailwind preset.
 
 ## Quick start
 

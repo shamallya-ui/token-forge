@@ -321,7 +321,7 @@ Testing: [testing-matrix.md](testing-matrix.md). Any change to naming, tiers or 
 | Contrast job (`npm run contrast`) | Done: 98 of 98 pairs pass (0.2.0) |
 | Tests (`npm test`, node:test): validity, naming, contrast, parity, determinism | Done: 44 tests |
 | CI (`.github/workflows/ci.yml`) | Added |
-| `@shamallya-ui/tokens` 0.1.0 published to npm (2026-10-30) and verified by a clean install | Done |
+| `@shamallya-ui/tokens` 0.1.0 (2026-10-30) and 0.2.0 (2026-11-02) published to npm and verified by clean installs | Done |
 | Not yet: `@shamallya-ui/components`, showcase, visual regression, other platforms | Later phases |
 
 Notes: the Tailwind preset targets Tailwind 3 style presets (and can be loaded in Tailwind 4 with the config compatibility directive); dark mode is by `data-theme="dark"` or the system preference unless `data-theme="light"` is set.

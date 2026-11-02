@@ -2,7 +2,7 @@
 
 All notable changes to `@shamallya-ui/tokens`. Versioning follows semver: a removed or renamed token is a major change, new tokens are minor, value tweaks that keep a token's meaning are patch.
 
-## 0.2.0 - 2026-11-02
+## 0.2.0 - 2026-11-02 (published to npm)
 
 Added (found while adopting the tokens in the portfolio and in Vibgyor):
 
