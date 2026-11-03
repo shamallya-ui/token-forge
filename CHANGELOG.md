@@ -2,6 +2,22 @@
 
 All notable changes to `@shamallya-ui/tokens`. Versioning follows semver: a removed or renamed token is a major change, new tokens are minor, value tweaks that keep a token's meaning are patch.
 
+## 0.4.0 - 2026-11-03 (prepared; publish pending)
+
+Added (found by the designer and testing agents specifying the first React components):
+
+- `semantic.size.border-width-{default,strong,heavy}` (2, 2.5 and 3 px), `icon-{sm,md,lg}` (20, 22 and 24 px), `switch-track-width`, `switch-track-height`, `switch-thumb` (56, 32 and 24 px) and `tracking-label` (0.5 px, for uppercase Latin labels only; apply under `:lang(en)`).
+- `semantic.color.border.card`: the card edge, transparent in light and a visible edge in dark (use with `border-width-default` so layout does not shift between modes). `primitive.color.transparent` backs it.
+- A `prefers-reduced-motion: reduce` block in `tokens.css` that collapses the transition tokens.
+- `slate-teal`: `radius.control` is 12 px (a theme may now override the radius); a `slate.350` step so dark `text.subtle` stays distinct from muted text and reaches about 7.8:1; a dark card edge.
+- Contrast job: 116 pairs (was 106), now also guarding `primary.on` on hover and active, `primary.text` as a 3:1 border on raised, and the focus ring and strong border on sunken.
+
+Changed (correction):
+
+- Default theme, dark mode: `primary.hover` and `primary.active` now use darker blue steps (500 and 600) instead of lighter ones, because white text on the lighter values failed contrast (2.7:1 and 2.0:1) when a filled primary control is hovered or pressed. The apps in this workspace do not use these two tokens.
+
+No tokens were removed or renamed. 58 tests pass.
+
 ## 0.3.0 - 2026-11-03 (published to npm)
 
 Added (requested by the Konkani Meal Planner, the first React consumer; ADR-0009, ADR-0010, ADR-0011):

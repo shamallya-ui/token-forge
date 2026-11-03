@@ -10,7 +10,7 @@ The Konkani Meal Planner requires a 15 px type floor, 56 px buttons, 48 px icon 
 1. Add a **comfortable mode**: a token set that raises control height, minimum target, type floor and reading sizes. Components read these tokens; they never carry their own overrides. The mode is selected by an attribute on a container, so it can apply to a whole app or one region, in the same way as the dark-mode attribute.
 2. Add `surface.canvas` (page behind cards) and `border.subtle` (separators in cards). A background token must never be used for a border.
 3. Add a display type size (the 60 px page numeral) and one pushed-screen title size (28 px, decided by the planner).
-4. Rules baked into the component spec: no disabled-by-opacity state (an action is absent, or replaced by an inert reason block); nested radius is the container radius minus its border width.
+4. Rules baked into the component spec: no disabled-by-opacity state (an action is absent, or replaced by an inert reason block); nested radius is the container radius minus the distance from the container's outer edge to the child's edge (border width plus padding), never below 0.
 
 ## Implementation status
 

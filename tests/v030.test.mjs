@@ -63,14 +63,14 @@ test('K-05/C-12: the slate-teal theme passes every contrast pair in light and da
 test('B-02: the theme changes brand-level colours only, and keeps three text levels in dark', () => {
   const t = resolved.themes['slate-teal'];
   const differs = Object.keys(t.light).filter((p) => differ(t.light[p], resolved.light[p]));
-  assert.ok(differs.length > 0 && differs.every((p) => /^shamallya\.(semantic\.color|component)\./.test(p) || /primitive\.color\.(slate|teal)\./.test(p)), differs.join(', '));
+  assert.ok(differs.length > 0 && differs.every((p) => /^shamallya\.(semantic\.(color|radius)|component)\./.test(p) || /primitive\.color\.(slate|teal)\./.test(p)), differs.join(', '));
   assert.notEqual(t.dark[COL('text.subtle')], t.dark[COL('text.muted')]);
   assert.equal(t.light[COL('primary.default')].toUpperCase(), '#115E59');
 });
 
-test('B-02: the theme file overrides only semantic colours, in light, auto-dark, explicit dark and nested scopes', () => {
+test('B-02: the theme file overrides only semantic colours and radius, in light, auto-dark, explicit dark and nested scopes', () => {
   const names = [...themeCss.matchAll(/--([a-z0-9-]+):/g)].map((m) => m[1]);
-  assert.ok(names.length > 0 && names.every((n) => n.startsWith('shamallya-semantic-color-')));
+  assert.ok(names.length > 0 && names.every((n) => /^shamallya-semantic-(color|radius)-/.test(n)));
   assert.match(themeCss, /^\[data-brand="slate-teal"\] \{/m);
   assert.match(themeCss, /prefers-color-scheme: dark/);
   assert.match(themeCss, /\[data-brand="slate-teal"\]\[data-theme="dark"\],\n\[data-theme="dark"\] \[data-brand="slate-teal"\]/);

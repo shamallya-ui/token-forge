@@ -5,9 +5,9 @@ import { join, relative, sep } from 'node:path';
 export const TIERS = ['primitive', 'semantic', 'component'];
 export const CATEGORIES = ['color', 'font', 'space', 'radius', 'shadow', 'motion', 'z', 'size'];
 export const TYPES = ['color', 'dimension', 'duration', 'cubicBezier', 'number', 'fontFamily', 'fontWeight', 'shadow'];
-export const COLOR_STEPS = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950', 'dark-fill'];
+export const COLOR_STEPS = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950', 'dark-fill', '350'];
 export const HUES = ['blue', 'red', 'yellow', 'green', 'neutral', 'slate', 'teal'];
-export const RAMP_STEPS = COLOR_STEPS.filter((x) => x !== 'dark-fill');
+export const RAMP_STEPS = COLOR_STEPS.filter((x) => x !== 'dark-fill' && x !== '350');
 export const TAG_HUES = ['blue', 'amber', 'green', 'purple', 'orange', 'red', 'pink', 'indigo', 'neutral'];
 export const TAG_SLOTS = ['light-text', 'light-background', 'light-border', 'dark-text', 'dark-background', 'dark-border'];
 export const MAX_ALIAS_DEPTH = 4;
@@ -39,7 +39,7 @@ export const filesForMode = (files, mode) => files.filter((f) => !MODES[mode].so
 /** Base tokens for a mode with a theme's files laid over them; theme tokens replace base tokens at the same path. */
 export function combineTheme(baseFiles, themeFiles, mode) {
   const base = combine(filesForMode(baseFiles, mode));
-  const themed = combine(themeFiles.filter((f) => f.file.includes(mode === 'dark' ? 'color-dark' : 'color-light') || f.file.includes('/primitive/')));
+  const themed = combine(themeFiles.filter((f) => f.file.includes(mode === 'dark' ? 'color-dark' : 'color-light') || f.file.includes('/primitive/') || f.file.endsWith('/radius.json')));
   const tokens = new Map(base.tokens);
   for (const [path, t] of themed.tokens) tokens.set(path, t);
   return { tokens, errors: [...base.errors, ...themed.errors], overridden: [...themed.tokens.keys()] };
@@ -51,7 +51,7 @@ export function lintThemeRamps(tokens) {
   const ramps = new Map();
   for (const [path, t] of tokens) {
     const s = t.segments;
-    if (s[1] === 'primitive' && s[2] === 'color' && s[3] !== 'white' && s[3] !== 'tag') (ramps.get(s[3]) ?? ramps.set(s[3], new Set()).get(s[3])).add(s[4]);
+    if (s[1] === 'primitive' && s[2] === 'color' && s[3] !== 'white' && s[3] !== 'transparent' && s[3] !== 'tag') (ramps.get(s[3]) ?? ramps.set(s[3], new Set()).get(s[3])).add(s[4]);
   }
   for (const [hue, steps] of ramps) for (const step of RAMP_STEPS) if (!steps.has(step)) errors.push(`theme ramp "${hue}" is missing step ${step}`);
   return errors;
@@ -194,7 +194,7 @@ export function lintNames(tokens) {
       if (!TAG_HUES.includes(s[4] ?? '')) errors.push(`${name}: unknown tag hue "${s[4]}"`);
       if (!TAG_SLOTS.includes(s[5] ?? '')) errors.push(`${name}: tag slot "${s[5]}" is not one of ${TAG_SLOTS.join(', ')}`);
       if (s.length !== 6) errors.push(`${name}: tag primitives are shamallya.primitive.color.tag.<hue>.<slot>`);
-    } else if (s[1] === 'primitive' && s[2] === 'color' && s[3] !== 'white') {
+    } else if (s[1] === 'primitive' && s[2] === 'color' && s[3] !== 'white' && s[3] !== 'transparent') {
       if (!HUES.includes(s[3])) errors.push(`${name}: unknown hue "${s[3]}"`);
       else if (!COLOR_STEPS.includes(s[4] ?? '')) errors.push(`${name}: colour step "${s[4]}" is not one of ${COLOR_STEPS.join(', ')}`);
     }

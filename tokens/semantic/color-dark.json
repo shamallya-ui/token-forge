@@ -50,6 +50,11 @@
           "subtle": {
             "$value": "{shamallya.primitive.color.neutral.900}",
             "$type": "color"
+          },
+          "card": {
+            "$value": "{shamallya.primitive.color.neutral.700}",
+            "$type": "color",
+            "$description": "Card edge: invisible in light, 2px visible edge in dark (pair with size.border-width-default)"
           }
         },
         "primary": {
@@ -58,11 +63,11 @@
             "$type": "color"
           },
           "hover": {
-            "$value": "{shamallya.primitive.color.blue.400}",
+            "$value": "{shamallya.primitive.color.blue.500}",
             "$type": "color"
           },
           "active": {
-            "$value": "{shamallya.primitive.color.blue.300}",
+            "$value": "{shamallya.primitive.color.blue.600}",
             "$type": "color"
           },
           "on": {

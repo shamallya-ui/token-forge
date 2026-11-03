@@ -30,8 +30,8 @@
             "$value": "{shamallya.primitive.color.slate.300}"
           },
           "subtle": {
-            "$type": "color",
-            "$value": "{shamallya.primitive.color.slate.400}"
+            "$value": "{shamallya.primitive.color.slate.350}",
+            "$type": "color"
           },
           "disabled": {
             "$type": "color",
@@ -50,6 +50,10 @@
           "subtle": {
             "$type": "color",
             "$value": "{shamallya.primitive.color.slate.800}"
+          },
+          "card": {
+            "$value": "{shamallya.primitive.color.slate.700}",
+            "$type": "color"
           }
         },
         "primary": {

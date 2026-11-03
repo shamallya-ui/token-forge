@@ -50,6 +50,11 @@
           "subtle": {
             "$value": "{shamallya.primitive.color.neutral.100}",
             "$type": "color"
+          },
+          "card": {
+            "$value": "{shamallya.primitive.color.transparent}",
+            "$type": "color",
+            "$description": "Card edge: invisible in light, 2px visible edge in dark (pair with size.border-width-default)"
           }
         },
         "primary": {

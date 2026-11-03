@@ -177,7 +177,7 @@ Added in 0.3.0 (53 tests, 106 contrast pairs): K-01, K-02, K-05, K-06 at token l
 | K-01 | Every interactive component in comfortable mode | Happy | Target at least 48 px; buttons, chips, switcher and disclosure at least 56 px |
 | K-02 | Any text in comfortable mode | Happy | At least 15 px |
 | K-03 | Any component with a disabled-by-opacity state | Negative | Lint fails |
-| K-04 | Nested radius | Happy | Equals container radius minus border width |
+| K-04 | Nested radius | Happy | Equals container radius minus (border width plus padding), never below 0 |
 | K-05 | slate-teal theme, both modes | Happy | All contrast pairs pass |
 | K-06 | Canvas pairs | Happy | Text at least 4.5:1, focus ring and strong border at least 3:1 on the canvas; the subtle border is decorative and exempt |
 | K-07 | Two-target row (toggle plus link) | Happy | Separate focus stops with distinct names; toggle not nested in link |

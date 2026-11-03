@@ -377,3 +377,7 @@ Implementation notes (0.3.0):
 - `border.subtle` is decorative and has no contrast pair; `surface.canvas` is paired with default text, muted text, the focus ring and strong borders. `primary.text` and `text.subtle` are not guaranteed on the canvas; use them on raised or default surfaces.
 - The planner's focus ring (3px with a 2px gap, aliasing default text) is `color.focus.ring` with `size.focus-ring-width` and `size.focus-ring-offset`; in slate-teal the ring is slate 900 in light and slate 50 in dark.
 - Nested radius (child equals parent minus the gap) is a component rule, not a token.
+
+## 19. Tokens added in 0.4.0 (2026-11-03)
+
+Driven by the first component specs (designer and testing agent review). New: border widths, icon sizes, switch dimensions, label tracking, `border.card` (transparent in light, visible in dark), reduced-motion handling, the slate-teal control radius (12 px) and a `slate.350` step. Guideline from the review: outline buttons and dominant borders use `primary.text` as the border colour (it equals `primary.default` in slate-teal and clears 3:1 in the default dark theme). The nested-radius rule is: child radius = parent radius minus the distance from the parent's outer edge to the child's edge (border width plus padding), floor 0. See CHANGELOG.md.

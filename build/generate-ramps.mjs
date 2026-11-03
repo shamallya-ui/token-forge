@@ -62,6 +62,7 @@ color.neutral = {
   950: colour('#12100F'),
 };
 color.white = colour('#FFFFFF');
+color.transparent = colour('#00000000', 'Fully transparent, for borders that reserve space without showing');
 
 const out = { shamallya: { primitive: { color } } };
 const file = fileURLToPath(new URL('../tokens/primitive/color.json', import.meta.url));

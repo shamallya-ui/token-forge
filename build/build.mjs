@@ -122,6 +122,13 @@ const css = [
   indent(dark, 2),
   '}',
   '',
+  '@media (prefers-reduced-motion: reduce) {',
+  '  :root {',
+  '    --shamallya-semantic-motion-transition-fast: 0.01ms;',
+  '    --shamallya-semantic-motion-transition-base: 0.01ms;',
+  '  }',
+  '}',
+  '',
   '/* Comfortable mode: larger controls and text. Apply data-density="comfortable" to the root or to any container. */',
   '[data-density="comfortable"] {',
   indent(comfortable, 2),
@@ -153,7 +160,7 @@ for (const name of readdirSync(rel('themes')).sort()) {
     check(`theme ${name} ${mode}`, set, lintThemeRamps(combine(themeFiles).tokens));
     out[mode] = toObject(resolveAll(set.tokens));
     decls[mode] = set.overridden
-      .filter((p) => p.startsWith('shamallya.semantic.color.'))
+      .filter((p) => p.startsWith('shamallya.semantic.color.') || (mode === 'light' && p.startsWith('shamallya.semantic.radius.')))
       .sort()
       .map((p) => `--${p.split('.').join('-')}: ${out[mode][p]};`);
   }

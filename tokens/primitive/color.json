@@ -266,6 +266,11 @@
         "white": {
           "$value": "#FFFFFF",
           "$type": "color"
+        },
+        "transparent": {
+          "$value": "#00000000",
+          "$type": "color",
+          "$description": "Fully transparent, for borders that reserve space without showing"
         }
       }
     }

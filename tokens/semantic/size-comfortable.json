@@ -46,6 +46,56 @@
           "$type": "dimension",
           "$value": "0.125rem",
           "$description": "Gap between element and focus ring, 2px"
+        },
+        "border-width-default": {
+          "$type": "dimension",
+          "$value": "0.125rem",
+          "$description": "Standard border, 2px"
+        },
+        "border-width-strong": {
+          "$type": "dimension",
+          "$value": "0.15625rem",
+          "$description": "Strong control border, 2.5px"
+        },
+        "border-width-heavy": {
+          "$type": "dimension",
+          "$value": "0.1875rem",
+          "$description": "Emphasis border (today, dominant, open), 3px"
+        },
+        "icon-sm": {
+          "$type": "dimension",
+          "$value": "1.25rem",
+          "$description": "Icon inside a control, 20px"
+        },
+        "icon-md": {
+          "$type": "dimension",
+          "$value": "1.375rem",
+          "$description": "Leading field icon, 22px"
+        },
+        "icon-lg": {
+          "$type": "dimension",
+          "$value": "1.5rem",
+          "$description": "Icon-button glyph, 24px"
+        },
+        "switch-track-width": {
+          "$type": "dimension",
+          "$value": "3.5rem",
+          "$description": "Switch track width, 56px"
+        },
+        "switch-track-height": {
+          "$type": "dimension",
+          "$value": "2rem",
+          "$description": "Switch track height, 32px"
+        },
+        "switch-thumb": {
+          "$type": "dimension",
+          "$value": "1.5rem",
+          "$description": "Switch thumb diameter, 24px"
+        },
+        "tracking-label": {
+          "$type": "dimension",
+          "$value": "0.03125rem",
+          "$description": "Letter spacing for uppercase Latin labels, 0.5px; apply under :lang(en) only"
         }
       }
     }

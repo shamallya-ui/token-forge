@@ -1,0 +1,13 @@
+{
+  "shamallya": {
+    "semantic": {
+      "radius": {
+        "$type": "dimension",
+        "control": {
+          "$value": "{shamallya.primitive.radius.lg}",
+          "$description": "Planner control radius, 12px"
+        }
+      }
+    }
+  }
+}

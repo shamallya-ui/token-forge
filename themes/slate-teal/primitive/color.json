@@ -46,6 +46,11 @@
           "950": {
             "$type": "color",
             "$value": "#020617"
+          },
+          "350": {
+            "$type": "color",
+            "$value": "#9FADC0",
+            "$description": "Between 300 and 400: keeps dark subtle text distinct from muted and above 7:1 on raised"
           }
         },
         "teal": {
