@@ -169,3 +169,16 @@ When a requirement ID in the PRD changes, update the map in section 1 and the af
 Automated with `npm run check` (lint, build, contrast, then `node --test`): T-01 to T-12, N-01 and N-03 to N-12 (token validity and naming), C-01 to C-09, C-12, C-15, C-16, C-18 (contrast, including the 4.5:1 boundary using #767676 and #777777), P-01 to P-04, P-07, P-08 (parity), O-01 to O-06 and O-10 (output parity, determinism, package exports). 44 tests and 98 contrast pairs pass (0.2.0 added tests for tag naming, the new tokens and the confirmed tag values).
 
 Not yet automated: visual regression (V), cross-framework rendering (X), brand-theme swap (B), governance and release checks (G), non-colour status checks, Tailwind-in-a-real-app integration.
+
+## 14. Comfortable mode and planner-driven cases (added 2026-11-03, not yet automated)
+
+| ID | Case | Type | Expected |
+|----|------|------|----------|
+| K-01 | Every interactive component in comfortable mode | Happy | Target at least 48 px; buttons, chips, switcher and disclosure at least 56 px |
+| K-02 | Any text in comfortable mode | Happy | At least 15 px |
+| K-03 | Any component with a disabled-by-opacity state | Negative | Lint fails |
+| K-04 | Nested radius | Happy | Equals container radius minus border width |
+| K-05 | slate-teal theme, both modes | Happy | All contrast pairs pass |
+| K-06 | Canvas and subtle border pairs | Happy | At least 3:1 for borders against the surface, text pairs at least 4.5:1 |
+| K-07 | Two-target row (toggle plus link) | Happy | Separate focus stops with distinct names; toggle not nested in link |
+| K-08 | Long and mixed-script dish names | Boundary | Layout holds, no clipped text |

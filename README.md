@@ -78,7 +78,7 @@ Light-mode page background is soft cream #FAF7F2; dark mode uses the warm black.
 | [docs/ideas.md](docs/ideas.md) | Suggested ideas and recommendations |
 | [docs/components.md](docs/components.md) | Component list drawn from Vibgyor and the Konkani Meal Planner |
 | [docs/brand/logo-typography-brief.md](docs/brand/logo-typography-brief.md) | Five logo concepts and three type pairings |
-| [docs/adr/](docs/adr/) | Architecture decision records (0001 to 0008) |
+| [docs/adr/](docs/adr/) | Architecture decision records (0001 to 0011) |
 
 ## Naming at a glance
 

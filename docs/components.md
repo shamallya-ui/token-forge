@@ -68,33 +68,17 @@ Patterns V1-29 and V1-30 are product-level; they ship as documented patterns fir
 
 ## 3. V2 component additions (Konkani Meal Planner)
 
-**Deferred (Shamala, 2026-10-30): V2 needs refinement and will be added later.** The rows below are a working draft, not approved.
+**Superseded (2026-11-03).** The earlier 21-row draft is replaced by the development agent's inventory (30 components, C1 to C30) in `Konkani Meal Planner/app/COMPONENTS.md`. That file is now the first intake in the component project's requirements file, `ShaMallya Components/components.md`, which is the single place any team adds component requests. This repo keeps only the token-side consequences below.
 
-Not needed by Vibgyor today; planned after V1 is stable.
+Triage of the 30 planner components (decided 2026-11-03):
 
-| # | Component | Source requirement | Notes |
-|---|-----------|--------------------|-------|
-| V2-01 | Bottom tab bar | Pantry, Menu, Search (Grocery in Phase 2) | Safe-area padding; 44 px targets |
-| V2-02 | Screen header with labelled back button | Navigation in all screens | Extends V1-11 |
-| V2-03 | Segmented control with "none selected" and tap-again-to-clear | Pantry little / some / plenty | Extends V1-10 |
-| V2-04 | Category row with expandable item tags | Eight pantry categories, item tags (later phase) | Accordion plus chips |
-| V2-05 | Removable chip | Item tags | Extends V1-09 |
-| V2-06 | Role tag | saar, rasam, kadi, upkari, etc. | Category colour tokens |
-| V2-07 | Dish row with swap action | Weekly menu | List row plus ghost button |
-| V2-08 | Meal slot section | Breakfast, lunch, evening tea, dinner | Pattern |
-| V2-09 | Day card for the weekly menu | 7 days by 4 slots | Pattern; shares V1-29 structure |
-| V2-10 | Ingredient row with Have / Buy status | Recipe detail | Status with icon and text |
-| V2-11 | Numbered method steps | Recipe detail | Stepper / ordered list |
-| V2-12 | Recipe detail sheet | Opened from menu or search | Bottom sheet on phones, dialog on larger screens |
-| V2-13 | Bottom sheet / drawer | Itemised pantry entry, recipe detail | Mobile-first alternative to modal |
-| V2-14 | Progress bar | Pantry setup | |
-| V2-15 | Disabled button with inline reason | "Generation needs at least two categories" | Button pattern, plus hint text |
-| V2-16 | Toggle switch | Healthy / vegan / quick (later phases), kid-friendly tag | |
-| V2-17 | Grocery list item (checkbox, manual item, derived item) | Phase 2 | Extends V1-07 |
-| V2-18 | Skeleton | Recipe bundle loading | |
-| V2-19 | Tooltip | Optional | Low priority |
-| V2-20 | Action menu | Per-dish actions | Low priority |
-| V2-21 | Language switcher | Kannada localisation (Phase 6) | Needs Kannada-capable fonts |
+| Bucket | Components |
+|--------|-----------|
+| shadcn primitive, theme only | C11 cooked tick (Checkbox or Switch), C12 week switcher (ToggleGroup or Tabs), C18, C20, C21 (Button variants), C22 search field, C23 filter chip (single-select ToggleGroup), C24 day accordion, C26 confirm dialog, C27 notice banner, C28 setting toggle, C29 schedule field |
+| Library composite | C1 tab bar, C2, C3 headers, C4 back link, C5 section heading, C6 caption, C7 grouped list card, C8 list row, C9 slot card, C13 day row, C14 frozen-week block, C25 slot picker row, C30 zero-results state |
+| Stays in the planner | C10 dish row, C15 planned label row, C16 page-number block, C17 ingredient row, C19 method step list (revisit if a second app needs them) |
+
+Token consequences (see architecture section 18, ADR-0009, ADR-0010, ADR-0011): add `surface.canvas` and `border.subtle`; add a comfortable touch mode; add display and title type sizes; build a slate-teal theme for the planner. Most other "missing" tokens in the planner's list already exist under different names.
 
 ## 4. Coverage and cross-cutting requirements
 

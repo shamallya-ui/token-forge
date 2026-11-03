@@ -305,6 +305,9 @@ Semver for the packages (breaking token rename/removal is a major); changelog on
 | [0006](adr/0006-svelte-5-first-class.md) | Svelte 5 is first-class |
 | [0007](adr/0007-palette-warm-editorial.md) | Palette direction B, warm editorial |
 | [0008](adr/0008-lucide-icons-and-tag-colours.md) | Lucide icons; coloured or neutral tags |
+| [0009](adr/0009-comfortable-touch-mode.md) | Comfortable touch mode as a token set; new canvas and subtle-border tokens |
+| [0010](adr/0010-shadcn-registry-mapped-to-tokens.md) | shadcn as owned source, delivered by registry, mapped to tokens |
+| [0011](adr/0011-slate-teal-theme-for-planner.md) | Slate-teal as the second theme, for the Konkani Meal Planner |
 
 ## 15. Testing and Documentation Updates
 
@@ -335,3 +338,35 @@ Notes: the Tailwind preset targets Tailwind 3 style presets (and can be loaded i
 | `semantic.color.tag.<hue>.{text,background,border}` | Categorical tags (subjects, categories); coloured or neutral | The warmed palette in ADR-0008 via `primitive.color.tag.<hue>.<slot>` |
 
 Naming exception: colour words are allowed only as the hue segment under `semantic.color.tag`. Tags never carry status meaning by colour alone. See CHANGELOG.md.
+
+## 18. Planned for 0.3.0 and the planner name mapping (decided 2026-11-03)
+
+Token additions (documentation only; not built yet):
+
+| Token | Purpose | Notes |
+|-------|---------|-------|
+| `semantic.color.surface.canvas` | Page background behind cards | Light and dark values; contrast pairs added against text.default and text.muted |
+| `semantic.color.border.subtle` | Row separators inside cards | Fixes the planner's use of a background colour as a border |
+| Comfortable-mode scale (`shamallya.semantic.size.*` or equivalent) | Control height 56, minimum target 48, type floor 15, reading sizes 17 to 19 | A token set selected by an attribute, not per-component overrides (ADR-0009) |
+| Display and title type sizes | 60 px numeral; one pushed-screen title size | The planner must choose 28 or 30 for the title |
+| `slate-teal` theme | Brand-level overrides only | ADR-0011 |
+
+Mapping from the planner's vocabulary (written against the gallery) to the shipped 0.2.0 tokens:
+
+| Planner name | Shipped token (under `shamallya.semantic.`) |
+|--------------|---------------------------------------------|
+| bg.canvas | color.surface.canvas (new) |
+| bg.surface | color.surface.raised (cards) or color.surface.default (page, if canvas is not used) |
+| bg.sunken | color.surface.sunken |
+| fg.default / fg.muted / fg.subtle | color.text.default / .muted / .subtle |
+| fg.onAccent | color.primary.on |
+| action.primary / primaryHover | color.primary.default / .hover (.text for text use) |
+| border.default / border.strong | color.border.default / .strong |
+| border.subtle | color.border.subtle (new) |
+| border.focus | color.focus.ring |
+| status.success | color.success.* (unused by the planner) |
+| radius.control / radius.pill | radius.control / radius.pill (both exist) |
+| density.scale | replaced by the comfortable-mode scale |
+| font.ui | font.body |
+
+The planner's "half-specified dark mode" finding does not apply to the shipped tokens: every semantic token has light and dark values and is contrast-tested in both.
