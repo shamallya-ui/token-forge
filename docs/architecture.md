@@ -348,7 +348,7 @@ Token additions (documentation only; not built yet):
 | `semantic.color.surface.canvas` | Page background behind cards | Light and dark values; contrast pairs added against text.default and text.muted |
 | `semantic.color.border.subtle` | Row separators inside cards | Fixes the planner's use of a background colour as a border |
 | Comfortable-mode scale (`shamallya.semantic.size.*` or equivalent) | Control height 56, minimum target 48, type floor 15, reading sizes 17 to 19 | A token set selected by an attribute, not per-component overrides (ADR-0009) |
-| Display and title type sizes | 60 px numeral; one pushed-screen title size | The planner must choose 28 or 30 for the title |
+| Display and title type sizes | 60 px numeral; one pushed-screen title size | Title size decided: 28 px |
 | `slate-teal` theme | Brand-level overrides only | ADR-0011 |
 
 Mapping from the planner's vocabulary (written against the gallery) to the shipped 0.2.0 tokens:

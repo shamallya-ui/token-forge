@@ -68,7 +68,7 @@ Patterns V1-29 and V1-30 are product-level; they ship as documented patterns fir
 
 ## 3. V2 component additions (Konkani Meal Planner)
 
-**Superseded (2026-11-03).** The earlier 21-row draft is replaced by the development agent's inventory (30 components, C1 to C30) in `Konkani Meal Planner/app/COMPONENTS.md`. That file is now the first intake in the component project's requirements file, `ShaMallya Components/components.md`, which is the single place any team adds component requests. This repo keeps only the token-side consequences below.
+**Superseded (2026-11-03).** The earlier 21-row draft is replaced by the development agent's inventory (now 32 components, C1 to C32, revised version) in `Konkani Meal Planner/app/COMPONENTS.md`. That file is now the first intake in the component project's requirements file, `ShaMallya Components/components.md` (the register there is authoritative; the buckets below are the first triage and are superseded by it), which is the single place any team adds component requests. This repo keeps only the token-side consequences below.
 
 Triage of the 30 planner components (decided 2026-11-03):
 
