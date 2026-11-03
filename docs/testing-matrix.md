@@ -168,9 +168,9 @@ When a requirement ID in the PRD changes, update the map in section 1 and the af
 
 Automated with `npm run check` (lint, build, contrast, then `node --test`): T-01 to T-12, N-01 and N-03 to N-12 (token validity and naming), C-01 to C-09, C-12, C-15, C-16, C-18 (contrast, including the 4.5:1 boundary using #767676 and #777777), P-01 to P-04, P-07, P-08 (parity), O-01 to O-06 and O-10 (output parity, determinism, package exports). 44 tests and 98 contrast pairs pass (0.2.0 added tests for tag naming, the new tokens and the confirmed tag values).
 
-Not yet automated: visual regression (V), cross-framework rendering (X), brand-theme swap (B), governance and release checks (G), non-colour status checks, Tailwind-in-a-real-app integration.
+Added in 0.3.0 (53 tests, 106 contrast pairs): K-01, K-02, K-05, K-06 at token level, B-02 to B-04 for the slate-teal theme. Not yet automated: visual regression (V), cross-framework rendering (X), B-01 and B-05 in a browser, governance and release checks (G), non-colour status checks, K-03, K-04, K-07 and K-08 (component-level), Tailwind-in-a-real-app integration.
 
-## 14. Comfortable mode and planner-driven cases (added 2026-11-03, not yet automated)
+## 14. Comfortable mode and planner-driven cases (added 2026-11-03; K-01, K-02, K-05, K-06 automated at token level in 0.3.0)
 
 | ID | Case | Type | Expected |
 |----|------|------|----------|
@@ -179,6 +179,6 @@ Not yet automated: visual regression (V), cross-framework rendering (X), brand-t
 | K-03 | Any component with a disabled-by-opacity state | Negative | Lint fails |
 | K-04 | Nested radius | Happy | Equals container radius minus border width |
 | K-05 | slate-teal theme, both modes | Happy | All contrast pairs pass |
-| K-06 | Canvas and subtle border pairs | Happy | At least 3:1 for borders against the surface, text pairs at least 4.5:1 |
+| K-06 | Canvas pairs | Happy | Text at least 4.5:1, focus ring and strong border at least 3:1 on the canvas; the subtle border is decorative and exempt |
 | K-07 | Two-target row (toggle plus link) | Happy | Separate focus stops with distinct names; toggle not nested in link |
 | K-08 | Long and mixed-script dish names | Boundary | Layout holds, no clipped text |

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { combine, validate, lintNames, loadFiles, flatten } from '../build/lib/tokens.mjs';
+import { combine, validate, lintNames, loadFiles, flatten, filesForMode, MODES } from '../build/lib/tokens.mjs';
 import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
@@ -12,8 +12,8 @@ const has = (list, text) => list.some((e) => e.includes(text));
 
 test('T-01/N-01: the real token sources are valid and follow the naming rules', () => {
   const files = loadFiles(root);
-  for (const skip of ['color-dark.json', 'color-light.json']) {
-    const { tokens, errors } = combine(files.filter((f) => !f.file.endsWith(skip)));
+  for (const mode of Object.keys(MODES)) {
+    const { tokens, errors } = combine(filesForMode(files, mode));
     assert.deepEqual([...errors, ...validate(tokens), ...lintNames(tokens)], []);
   }
 });

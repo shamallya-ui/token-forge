@@ -9,6 +9,10 @@ The planner's design uses slate neutrals and a teal primary (light `#115e59`, da
 ## Decision
 The planner's look becomes the `slate-teal` theme: brand-level overrides only (neutral ramp, primary hue, canvas and surface values). Components are unchanged. The theme is built and contrast-tested by the same job as the default theme, in both modes. The planner's current hex values are the starting point, not final; any pair that fails the job is adjusted.
 
+## Implementation status
+
+Implemented in 0.3.0 as `themes/slate-teal/`; the planner's hex values were used as the starting point and all 106 contrast pairs pass in both modes. Dark mode keeps three text levels (subtle is slate 400, distinct from muted slate 300) instead of the planner's two.
+
 ## Consequences
 - The planner proves the theming claim with a real app.
 - Two themes now ship, so the theme-swap tests (B-series) become automated work.

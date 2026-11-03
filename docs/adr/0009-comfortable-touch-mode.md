@@ -12,6 +12,10 @@ The Konkani Meal Planner requires a 15 px type floor, 56 px buttons, 48 px icon 
 3. Add a display type size (the 60 px page numeral) and one pushed-screen title size (28 px, decided by the planner).
 4. Rules baked into the component spec: no disabled-by-opacity state (an action is absent, or replaced by an inert reason block); nested radius is the container radius minus its border width.
 
+## Implementation status
+
+Implemented in `@shamallya-ui/tokens` 0.3.0 as `semantic.size.*` selected by `data-density="comfortable"`.
+
 ## Consequences
 - 0.3.0 adds tokens, and contrast pairs for canvas and subtle border are added to the job (both modes).
 - Target-size and type-floor checks join the test matrix (see testing-matrix section 14).

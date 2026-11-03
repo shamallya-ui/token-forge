@@ -3,10 +3,11 @@ import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
 export const TIERS = ['primitive', 'semantic', 'component'];
-export const CATEGORIES = ['color', 'font', 'space', 'radius', 'shadow', 'motion', 'z'];
+export const CATEGORIES = ['color', 'font', 'space', 'radius', 'shadow', 'motion', 'z', 'size'];
 export const TYPES = ['color', 'dimension', 'duration', 'cubicBezier', 'number', 'fontFamily', 'fontWeight', 'shadow'];
 export const COLOR_STEPS = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950', 'dark-fill'];
-export const HUES = ['blue', 'red', 'yellow', 'green', 'neutral'];
+export const HUES = ['blue', 'red', 'yellow', 'green', 'neutral', 'slate', 'teal'];
+export const RAMP_STEPS = COLOR_STEPS.filter((x) => x !== 'dark-fill');
 export const TAG_HUES = ['blue', 'amber', 'green', 'purple', 'orange', 'red', 'pink', 'indigo', 'neutral'];
 export const TAG_SLOTS = ['light-text', 'light-background', 'light-border', 'dark-text', 'dark-background', 'dark-border'];
 export const MAX_ALIAS_DEPTH = 4;
@@ -25,6 +26,35 @@ export function listJson(dir) {
     else if (name.endsWith('.json')) out.push(p);
   }
   return out;
+}
+
+// Files that define the same paths on purpose, one set per mode. A mode's token set leaves out the other modes' files.
+export const MODES = {
+  light: ['color-dark.json', 'size-comfortable.json'],
+  dark: ['color-light.json', 'size-comfortable.json'],
+  comfortable: ['color-dark.json', 'size-default.json'],
+};
+export const filesForMode = (files, mode) => files.filter((f) => !MODES[mode].some((skip) => f.file.endsWith(skip)));
+
+/** Base tokens for a mode with a theme's files laid over them; theme tokens replace base tokens at the same path. */
+export function combineTheme(baseFiles, themeFiles, mode) {
+  const base = combine(filesForMode(baseFiles, mode));
+  const themed = combine(themeFiles.filter((f) => f.file.includes(mode === 'dark' ? 'color-dark' : 'color-light') || f.file.includes('/primitive/')));
+  const tokens = new Map(base.tokens);
+  for (const [path, t] of themed.tokens) tokens.set(path, t);
+  return { tokens, errors: [...base.errors, ...themed.errors], overridden: [...themed.tokens.keys()] };
+}
+
+/** A theme must define every step of each hue ramp it introduces (tests B-03, B-04). */
+export function lintThemeRamps(tokens) {
+  const errors = [];
+  const ramps = new Map();
+  for (const [path, t] of tokens) {
+    const s = t.segments;
+    if (s[1] === 'primitive' && s[2] === 'color' && s[3] !== 'white' && s[3] !== 'tag') (ramps.get(s[3]) ?? ramps.set(s[3], new Set()).get(s[3])).add(s[4]);
+  }
+  for (const [hue, steps] of ramps) for (const step of RAMP_STEPS) if (!steps.has(step)) errors.push(`theme ramp "${hue}" is missing step ${step}`);
+  return errors;
 }
 
 export function loadFiles(root, tokensDir = 'tokens') {

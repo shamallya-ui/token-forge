@@ -339,17 +339,17 @@ Notes: the Tailwind preset targets Tailwind 3 style presets (and can be loaded i
 
 Naming exception: colour words are allowed only as the hue segment under `semantic.color.tag`. Tags never carry status meaning by colour alone. See CHANGELOG.md.
 
-## 18. Planned for 0.3.0 and the planner name mapping (decided 2026-11-03)
+## 18. Tokens in 0.3.0 and the planner name mapping (decided 2026-11-03; built 2026-11-03)
 
-Token additions (documentation only; not built yet):
+Token additions (built; see CHANGELOG.md):
 
 | Token | Purpose | Notes |
 |-------|---------|-------|
 | `semantic.color.surface.canvas` | Page background behind cards | Light and dark values; contrast pairs added against text.default and text.muted |
 | `semantic.color.border.subtle` | Row separators inside cards | Fixes the planner's use of a background colour as a border |
-| Comfortable-mode scale (`shamallya.semantic.size.*` or equivalent) | Control height 56, minimum target 48, type floor 15, reading sizes 17 to 19 | A token set selected by an attribute, not per-component overrides (ADR-0009) |
+| Comfortable-mode scale (`shamallya.semantic.size.*`, selected by `data-density="comfortable"`) | Control height 56, minimum target 48, type floor 15, reading sizes 17 to 19 | A token set selected by an attribute, not per-component overrides (ADR-0009) |
 | Display and title type sizes | 60 px numeral; one pushed-screen title size | Title size decided: 28 px |
-| `slate-teal` theme | Brand-level overrides only | ADR-0011 |
+| `slate-teal` theme (`themes/slate-teal/`, `data-brand="slate-teal"`) | Brand-level overrides only; contrast-tested in both modes | ADR-0011 |
 
 Mapping from the planner's vocabulary (written against the gallery) to the shipped 0.2.0 tokens:
 
@@ -370,3 +370,10 @@ Mapping from the planner's vocabulary (written against the gallery) to the shipp
 | font.ui | font.body |
 
 The planner's "half-specified dark mode" finding does not apply to the shipped tokens: every semantic token has light and dark values and is contrast-tested in both.
+
+Implementation notes (0.3.0):
+- Mode files that define the same paths on purpose are paired (light/dark colour, default/comfortable size); the lint and tests treat each mode as its own set (`MODES` in `build/lib/tokens.mjs`).
+- A theme lives in `themes/<name>/` (primitive ramps, plus semantic light and dark overrides). The build lays it over the base tokens, validates and contrast-tests the merged result, and emits only the overridden semantic colours to `dist/themes/<name>.css`. The selectors support the root, an explicit `data-theme`, the system preference, and nested scopes (the inner scope wins).
+- `border.subtle` is decorative and has no contrast pair; `surface.canvas` is paired with default text, muted text, the focus ring and strong borders. `primary.text` and `text.subtle` are not guaranteed on the canvas; use them on raised or default surfaces.
+- The planner's focus ring (3px with a 2px gap, aliasing default text) is `color.focus.ring` with `size.focus-ring-width` and `size.focus-ring-offset`; in slate-teal the ring is slate 900 in light and slate 50 in dark.
+- Nested radius (child equals parent minus the gap) is a component rule, not a token.

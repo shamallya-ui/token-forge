@@ -24,11 +24,17 @@ export function checkContrast(resolvedModes, cfg) {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const rows = checkContrast(resolved, config);
-  for (const r of rows) {
-    console.log(`${r.pass ? 'PASS' : 'FAIL'}  ${r.mode.padEnd(5)} ${r.fg} on ${r.bg}: ${Number.isNaN(r.ratio) ? 'missing token' : r.ratio.toFixed(2) + ':1'} (min ${r.min})`);
+  const sets = [['default', resolved], ...Object.entries(resolved.themes ?? {})];
+  let failedAll = 0;
+  for (const [name, modes] of sets) {
+    const rows = checkContrast(modes, config);
+    console.log(`\n== ${name} ==`);
+    for (const r of rows) {
+      console.log(`${r.pass ? 'PASS' : 'FAIL'}  ${r.mode.padEnd(5)} ${r.fg} on ${r.bg}: ${Number.isNaN(r.ratio) ? 'missing token' : r.ratio.toFixed(2) + ':1'} (min ${r.min})`);
+    }
+    const failed = rows.filter((r) => !r.pass);
+    console.log(`${rows.length - failed.length}/${rows.length} pairs pass`);
+    failedAll += failed.length;
   }
-  const failed = rows.filter((r) => !r.pass);
-  console.log(`\n${rows.length - failed.length}/${rows.length} pairs pass`);
-  process.exit(failed.length ? 1 : 0);
+  process.exit(failedAll ? 1 : 0);
 }

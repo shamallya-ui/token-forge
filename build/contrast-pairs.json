@@ -308,6 +308,30 @@
       "bg": "tag.neutral.background",
       "min": 4.5,
       "kind": "text"
+    },
+    {
+      "fg": "text.default",
+      "bg": "surface.canvas",
+      "min": 4.5,
+      "kind": "text"
+    },
+    {
+      "fg": "text.muted",
+      "bg": "surface.canvas",
+      "min": 4.5,
+      "kind": "text"
+    },
+    {
+      "fg": "focus.ring",
+      "bg": "surface.canvas",
+      "min": 3,
+      "kind": "ui"
+    },
+    {
+      "fg": "border.strong",
+      "bg": "surface.canvas",
+      "min": 3,
+      "kind": "ui"
     }
   ]
 }

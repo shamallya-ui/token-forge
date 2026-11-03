@@ -1,0 +1,53 @@
+{
+  "shamallya": {
+    "semantic": {
+      "size": {
+        "control-height": {
+          "$type": "dimension",
+          "$value": "2.5rem"
+        },
+        "target-min": {
+          "$type": "dimension",
+          "$value": "2.75rem",
+          "$description": "Minimum size of any interactive target"
+        },
+        "icon-target": {
+          "$type": "dimension",
+          "$value": "2.5rem",
+          "$description": "Icon-only button size"
+        },
+        "text-floor": {
+          "$type": "dimension",
+          "$value": "{shamallya.primitive.font.size.sm}",
+          "$description": "Smallest allowed text size"
+        },
+        "text-body": {
+          "$type": "dimension",
+          "$value": "{shamallya.primitive.font.size.md}"
+        },
+        "text-reading": {
+          "$type": "dimension",
+          "$value": "{shamallya.primitive.font.size.md}"
+        },
+        "title": {
+          "$type": "dimension",
+          "$value": "{shamallya.primitive.font.size.2xl}"
+        },
+        "numeral": {
+          "$type": "dimension",
+          "$value": "{shamallya.primitive.font.size.numeral}"
+        },
+        "focus-ring-width": {
+          "$type": "dimension",
+          "$value": "0.1875rem",
+          "$description": "Focus ring thickness, 3px"
+        },
+        "focus-ring-offset": {
+          "$type": "dimension",
+          "$value": "0.125rem",
+          "$description": "Gap between element and focus ring, 2px"
+        }
+      }
+    }
+  }
+}

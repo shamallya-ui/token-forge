@@ -1,0 +1,86 @@
+{
+  "shamallya": {
+    "semantic": {
+      "color": {
+        "surface": {
+          "canvas": {
+            "$type": "color",
+            "$value": "{shamallya.primitive.color.slate.950}"
+          },
+          "default": {
+            "$type": "color",
+            "$value": "{shamallya.primitive.color.slate.950}"
+          },
+          "raised": {
+            "$type": "color",
+            "$value": "{shamallya.primitive.color.slate.900}"
+          },
+          "sunken": {
+            "$type": "color",
+            "$value": "{shamallya.primitive.color.slate.800}"
+          }
+        },
+        "text": {
+          "default": {
+            "$type": "color",
+            "$value": "{shamallya.primitive.color.slate.50}"
+          },
+          "muted": {
+            "$type": "color",
+            "$value": "{shamallya.primitive.color.slate.300}"
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "{shamallya.primitive.color.slate.400}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{shamallya.primitive.color.slate.600}"
+          }
+        },
+        "border": {
+          "default": {
+            "$type": "color",
+            "$value": "{shamallya.primitive.color.slate.700}"
+          },
+          "strong": {
+            "$type": "color",
+            "$value": "{shamallya.primitive.color.slate.400}"
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "{shamallya.primitive.color.slate.800}"
+          }
+        },
+        "primary": {
+          "default": {
+            "$type": "color",
+            "$value": "{shamallya.primitive.color.teal.300}"
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{shamallya.primitive.color.teal.200}"
+          },
+          "active": {
+            "$type": "color",
+            "$value": "{shamallya.primitive.color.teal.100}"
+          },
+          "on": {
+            "$type": "color",
+            "$value": "{shamallya.primitive.color.slate.950}"
+          },
+          "text": {
+            "$type": "color",
+            "$value": "{shamallya.primitive.color.teal.300}"
+          }
+        },
+        "focus": {
+          "ring": {
+            "$type": "color",
+            "$value": "{shamallya.primitive.color.slate.50}"
+          }
+        }
+      }
+    }
+  }
+}

@@ -14,6 +14,10 @@
           "sunken": {
             "$value": "{shamallya.primitive.color.neutral.100}",
             "$type": "color"
+          },
+          "canvas": {
+            "$value": "{shamallya.primitive.color.neutral.200}",
+            "$type": "color"
           }
         },
         "text": {
@@ -41,6 +45,10 @@
           },
           "strong": {
             "$value": "{shamallya.primitive.color.neutral.500}",
+            "$type": "color"
+          },
+          "subtle": {
+            "$value": "{shamallya.primitive.color.neutral.100}",
             "$type": "color"
           }
         },
