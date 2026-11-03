@@ -2,7 +2,7 @@
 
 All notable changes to `@shamallya-ui/tokens`. Versioning follows semver: a removed or renamed token is a major change, new tokens are minor, value tweaks that keep a token's meaning are patch.
 
-## 0.3.0 - 2026-11-03 (prepared; publish pending)
+## 0.3.0 - 2026-11-03 (published to npm)
 
 Added (requested by the Konkani Meal Planner, the first React consumer; ADR-0009, ADR-0010, ADR-0011):
 
