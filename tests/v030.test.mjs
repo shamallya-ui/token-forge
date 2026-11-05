@@ -68,12 +68,16 @@ test('B-02: the theme changes brand-level colours only, and keeps three text lev
   assert.equal(t.light[COL('primary.default')].toUpperCase(), '#115E59');
 });
 
-test('B-02: the theme file overrides only semantic colours and radius, in light, auto-dark, explicit dark and nested scopes', () => {
+test('B-02: the theme file overrides only semantic colours and radius, and the root data-theme decides dark (brand on the root or a container)', () => {
   const names = [...themeCss.matchAll(/--([a-z0-9-]+):/g)].map((m) => m[1]);
   assert.ok(names.length > 0 && names.every((n) => /^shamallya-semantic-(color|radius)-/.test(n)));
   assert.match(themeCss, /^\[data-brand="slate-teal"\] \{/m);
-  assert.match(themeCss, /prefers-color-scheme: dark/);
-  assert.match(themeCss, /\[data-brand="slate-teal"\]\[data-theme="dark"\],\n\[data-theme="dark"\] \[data-brand="slate-teal"\]/);
+  // Same rule as tokens.css: auto dark needs the root not forced light; forced dark needs the root data-theme="dark".
+  assert.match(themeCss, /@media \(prefers-color-scheme: dark\) \{\n  :root\[data-brand="slate-teal"\]:not\(\[data-theme="light"\]\),\n  :root:not\(\[data-theme="light"\]\) \[data-brand="slate-teal"\] \{/);
+  assert.match(themeCss, /^:root\[data-brand="slate-teal"\]\[data-theme="dark"\],\n:root\[data-theme="dark"\] \[data-brand="slate-teal"\] \{/m);
+  // The old selectors let a container or a nested ancestor override a forced-light root.
+  assert.doesNotMatch(themeCss, /^\s*\[data-brand="slate-teal"\]:not\(\[data-theme="light"\]\)/m);
+  assert.doesNotMatch(themeCss, /^\[data-theme="dark"\] \[data-brand/m);
 });
 
 test('B-04: a theme ramp with a missing step fails', () => {

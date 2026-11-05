@@ -75,6 +75,14 @@
           "numeral": {
             "$value": "3.75rem",
             "$description": "Large display numeral such as a page number, 60px"
+          },
+          "subtitle": {
+            "$value": "1.375rem",
+            "$description": "Statement, sheet title and section heading, 22px (TR-22)"
+          },
+          "headline": {
+            "$value": "2rem",
+            "$description": "Tab screen title, 32px (TR-32)"
           }
         },
         "weight": {

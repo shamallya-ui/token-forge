@@ -26,11 +26,26 @@ StyleDictionary.registerFormat({
       for (const k of keys) cur = cur[k] ??= {};
       cur[last === 'default' ? 'DEFAULT' : last] = value;
     };
-    const maps = { spacing: {}, borderRadius: {}, boxShadow: {}, zIndex: {}, fontFamily: {}, fontSize: {}, transitionDuration: {}, transitionTimingFunction: {} };
+    const maps = { spacing: {}, borderRadius: {}, boxShadow: {}, zIndex: {}, fontFamily: {}, fontSize: {}, fontWeight: {}, lineHeight: {}, letterSpacing: {}, borderWidth: {}, outlineWidth: {}, outlineOffset: {}, strokeWidth: {}, transitionDuration: {}, transitionTimingFunction: {} };
+    // semantic.size.<name> -> [tailwind theme key, utility name]; an unmapped size token fails the build so none is silently dropped.
+    const sizeMap = (n) => {
+      const renamed = { 'control-height': ['spacing', 'control'], 'target-min': ['spacing', 'target'], 'switch-track-width': ['spacing', 'switch-w'], 'switch-track-height': ['spacing', 'switch-h'],
+        'focus-ring-width': ['outlineWidth', 'ring'], 'focus-ring-offset': ['outlineOffset', 'ring'], 'tracking-label': ['letterSpacing', 'label'], 'icon-stroke': ['strokeWidth', 'icon'], 'icon-stroke-active': ['strokeWidth', 'icon-active'] };
+      if (renamed[n]) return renamed[n];
+      if (/^(icon-target|icon-(sm|md|lg)|switch-thumb)$/.test(n)) return ['spacing', n];
+      if (/^text-(floor|reading|body)$/.test(n)) return ['fontSize', 'ui-' + n.slice(5)];
+      if (/^(title|subtitle|headline|numeral)$/.test(n)) return ['fontSize', 'ui-' + n];
+      if (/^border-width-/.test(n)) return ['borderWidth', 'bw-' + n.slice(13)];
+      throw new Error(`tailwind preset: no utility mapping for semantic.size.${n}; add it to sizeMap in build/build.mjs`);
+    };
     for (const t of dictionary.allTokens) {
       const [, tier, cat, ...rest] = t.path;
       if (tier === 'semantic' && cat === 'color') put(colors, [...rest], v(t));
       else if (tier === 'primitive' && cat === 'space') maps.spacing[rest.join('-')] = v(t);
+      else if (tier === 'semantic' && cat === 'space') maps.spacing[rest.join('-')] = v(t);
+      else if (tier === 'semantic' && cat === 'size') { const [key, name] = sizeMap(rest.join('-')); maps[key][name] = v(t); }
+      else if (tier === 'primitive' && cat === 'font' && rest[0] === 'weight') maps.fontWeight[rest[1]] = v(t);
+      else if (tier === 'primitive' && cat === 'font' && rest[0] === 'line-height') maps.lineHeight[rest[1]] = v(t);
       else if (tier === 'semantic' && cat === 'radius') maps.borderRadius[rest.join('-')] = v(t);
       else if (tier === 'semantic' && cat === 'shadow') maps.boxShadow[rest.join('-')] = v(t);
       else if (tier === 'semantic' && cat === 'z') maps.zIndex[rest.join('-')] = v(t);
@@ -60,6 +75,38 @@ const run = async (name, extraSource, platforms) => {
 };
 
 const files = (destination, format, extra = {}) => ({ destination, format, ...extra });
+
+// ---- Validate everything and resolve all modes and themes first, so a bad token never leaves a half-written dist ----
+const filesAll = loadFiles(root);
+const modeSets = Object.fromEntries(['light', 'dark', 'comfortable'].map((m) => [m, combine(filesForMode(filesAll, m))]));
+const check = (label, set, extra = []) => {
+  const problems = [...set.errors, ...validate(set.tokens), ...lintNames(set.tokens), ...extra];
+  if (problems.length) throw new Error(`Token problems in ${label}; run npm run lint:\n` + problems.join('\n'));
+};
+for (const [m, set] of Object.entries(modeSets)) check(m, set);
+const toObject = (map) => Object.fromEntries([...map.entries()].sort(([a], [b]) => a.localeCompare(b)));
+const resolved = Object.fromEntries(Object.entries(modeSets).map(([m, set]) => [m, toObject(resolveAll(set.tokens))]));
+
+// ---- Brand themes: brand-level overrides only (themes/<name>/). Emits dist/themes/<name>.css ----
+const indent = (lines, n) => lines.map((l) => ' '.repeat(n) + l.trim()).join('\n');
+resolved.themes = {};
+const themeDecls = {};
+for (const name of readdirSync(rel('themes')).sort()) {
+  const themeFiles = loadFiles(root, `themes/${name}`);
+  const out = {};
+  const decls = {};
+  for (const mode of ['light', 'dark']) {
+    const set = combineTheme(filesAll, themeFiles, mode);
+    check(`theme ${name} ${mode}`, set, lintThemeRamps(combine(themeFiles).tokens));
+    out[mode] = toObject(resolveAll(set.tokens));
+    decls[mode] = set.overridden
+      .filter((p) => p.startsWith('shamallya.semantic.color.') || (mode === 'light' && p.startsWith('shamallya.semantic.radius.')))
+      .sort()
+      .map((p) => `--${p.split('.').join('-')}: ${out[mode][p]};`);
+  }
+  resolved.themes[name] = out;
+  themeDecls[name] = decls;
+}
 
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(work, { recursive: true });
@@ -101,7 +148,6 @@ const declarations = (css) => css.split('\n').filter((l) => /^\s+--/.test(l));
 const light = declarations(readFileSync(join(work, 'light.css'), 'utf8'));
 const dark = declarations(readFileSync(join(work, 'dark.css'), 'utf8'));
 const comfortable = declarations(readFileSync(join(work, 'comfortable.css'), 'utf8'));
-const indent = (lines, n) => lines.map((l) => ' '.repeat(n) + l.trim()).join('\n');
 const css = [
   '/* Generated by build/build.mjs from tokens/. Do not edit by hand. */',
   '/* Light is the default. Dark applies with data-theme="dark", or automatically when the system prefers dark and data-theme is not "light". */',
@@ -137,35 +183,12 @@ const css = [
 ].join('\n');
 writeFileSync(join(dist, 'tokens.css'), css);
 
-// ---- Resolved JSON (literal values per mode) for tests, tooling and the contrast check ----
-const filesAll = loadFiles(root);
-const modeSets = Object.fromEntries(['light', 'dark', 'comfortable'].map((m) => [m, combine(filesForMode(filesAll, m))]));
-const check = (label, set, extra = []) => {
-  const problems = [...set.errors, ...validate(set.tokens), ...lintNames(set.tokens), ...extra];
-  if (problems.length) throw new Error(`Token problems in ${label}; run npm run lint:\n` + problems.join('\n'));
-};
-for (const [m, set] of Object.entries(modeSets)) check(m, set);
-const toObject = (map) => Object.fromEntries([...map.entries()].sort(([a], [b]) => a.localeCompare(b)));
-const resolved = Object.fromEntries(Object.entries(modeSets).map(([m, set]) => [m, toObject(resolveAll(set.tokens))]));
-
-// ---- Brand themes: brand-level overrides only (themes/<name>/). Emits dist/themes/<name>.css ----
-resolved.themes = {};
 mkdirSync(join(dist, 'themes'), { recursive: true });
-for (const name of readdirSync(rel('themes')).sort()) {
-  const themeFiles = loadFiles(root, `themes/${name}`);
-  const out = {};
-  const decls = {};
-  for (const mode of ['light', 'dark']) {
-    const set = combineTheme(filesAll, themeFiles, mode);
-    check(`theme ${name} ${mode}`, set, lintThemeRamps(combine(themeFiles).tokens));
-    out[mode] = toObject(resolveAll(set.tokens));
-    decls[mode] = set.overridden
-      .filter((p) => p.startsWith('shamallya.semantic.color.') || (mode === 'light' && p.startsWith('shamallya.semantic.radius.')))
-      .sort()
-      .map((p) => `--${p.split('.').join('-')}: ${out[mode][p]};`);
-  }
-  resolved.themes[name] = out;
+for (const [name, decls] of Object.entries(themeDecls)) {
   const sel = `[data-brand="${name}"]`;
+  // The root's data-theme decides, as in tokens.css: the brand sits on the root or on a container inside it.
+  const auto = `:root${sel}:not([data-theme="light"]),\n  :root:not([data-theme="light"]) ${sel}`;
+  const forced = `:root${sel}[data-theme="dark"],\n:root[data-theme="dark"] ${sel}`;
   writeFileSync(join(dist, 'themes', `${name}.css`), [
     `/* Generated by build/build.mjs from themes/${name}/. Do not edit by hand. */`,
     `/* Brand theme "${name}": set data-brand="${name}" on the root or any container. Load after tokens.css. */`,
@@ -174,13 +197,12 @@ for (const name of readdirSync(rel('themes')).sort()) {
     '}',
     '',
     '@media (prefers-color-scheme: dark) {',
-    `  ${sel}:not([data-theme="light"]) {`,
+    `  ${auto} {`,
     indent(decls.dark, 4),
     '  }',
     '}',
     '',
-    `${sel}[data-theme="dark"],`,
-    `[data-theme="dark"] ${sel} {`,
+    `${forced} {`,
     indent(decls.dark, 2),
     '}',
     '',

@@ -168,6 +168,8 @@ When a requirement ID in the PRD changes, update the map in section 1 and the af
 
 Automated with `npm run check` (lint, build, contrast, then `node --test`): T-01 to T-12, N-01 and N-03 to N-12 (token validity and naming), C-01 to C-09, C-12, C-15, C-16, C-18 (contrast, including the 4.5:1 boundary using #767676 and #777777), P-01 to P-04, P-07, P-08 (parity), O-01 to O-06 and O-10 (output parity, determinism, package exports). 44 tests and 98 contrast pairs pass (0.2.0 added tests for tag naming, the new tokens and the confirmed tag values).
 
+Added in 0.5.0: see section 15 (65 tests).
+
 Added in 0.3.0 (53 tests, 106 contrast pairs): K-01, K-02, K-05, K-06 at token level, B-02 to B-04 for the slate-teal theme. Not yet automated: visual regression (V), cross-framework rendering (X), B-01 and B-05 in a browser, governance and release checks (G), non-colour status checks, K-03, K-04, K-07 and K-08 (component-level), Tailwind-in-a-real-app integration.
 
 ## 14. Comfortable mode and planner-driven cases (added 2026-11-03; K-01, K-02, K-05, K-06 automated at token level in 0.3.0)
@@ -182,3 +184,19 @@ Added in 0.3.0 (53 tests, 106 contrast pairs): K-01, K-02, K-05, K-06 at token l
 | K-06 | Canvas pairs | Happy | Text at least 4.5:1, focus ring and strong border at least 3:1 on the canvas; the subtle border is decorative and exempt |
 | K-07 | Two-target row (toggle plus link) | Happy | Separate focus stops with distinct names; toggle not nested in link |
 | K-08 | Long and mixed-script dish names | Boundary | Layout holds, no clipped text |
+
+## 15. Release 0.5.0 cases (added 2026-11-05; all automated in tests/v050.test.mjs and tests/v030.test.mjs)
+
+| Id | Case | Type | Expected |
+|----|------|------|----------|
+| R5-01 | 22 px and 32 px type sizes (TR-22, TR-32) | Happy | `size.subtitle` is 1.375rem and `size.headline` is 2rem in light, dark and comfortable, and in tokens.css |
+| R5-02 | Icon stroke tokens (TR-stroke) | Happy | `size.icon-stroke` is 2 and `size.icon-stroke-active` is 2.2, unitless, in every mode |
+| R5-03 | Tailwind preset covers the utilities the components repo defined by hand | Happy | Spacing, border width, ring, font size, weight, line height, tracking and stroke keys exist in the ESM and CJS presets and point at the right variables |
+| R5-04 | Every semantic size and space token reaches the preset | Negative | A token with no utility mapping fails the build (and this test) |
+| R5-05 | Contrast coverage | Negative | A semantic colour in no pair and not in `exemptions` (with a reason) fails; an exemption for a paired or missing token fails |
+| R5-06 | Luminance of a colour with alpha other than ff | Negative | Throws instead of returning a wrong ratio |
+| R5-07 | Release guard | Happy | `prepublishOnly` runs lint, build, contrast and test; package version is 0.5.0 |
+| B-02 (revised) | Theme dark selectors follow the root | Happy | The exact selectors are `:root[data-brand]` plus `:root ... [data-brand]` under `:not([data-theme="light"])` and `[data-theme="dark"]`; a forced-light root or a nested `data-theme` ancestor no longer flips the brand. Selector text is asserted; applying the CSS in a browser is not yet automated |
+| R5-08 | Validation before output | Negative | An invalid token makes the build fail with the existing `dist` untouched (checked by hand, not automated) |
+
+Totals after 0.5.0: 65 tests, 116 contrast pairs per theme, 13 exempt colour tokens.

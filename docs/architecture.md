@@ -381,3 +381,21 @@ Implementation notes (0.3.0):
 ## 19. Tokens added in 0.4.0 (2026-11-03)
 
 Driven by the first component specs (designer and testing agent review). New: border widths, icon sizes, switch dimensions, label tracking, `border.card` (transparent in light, visible in dark), reduced-motion handling, the slate-teal control radius (12 px) and a `slate.350` step. Guideline from the review: outline buttons and dominant borders use `primary.text` as the border colour (it equals `primary.default` in slate-teal and clears 3:1 in the default dark theme). The nested-radius rule is: child radius = parent radius minus the distance from the parent's outer edge to the child's edge (border width plus padding), floor 0. See CHANGELOG.md.
+
+## 20. Tokens in 0.5.0 (prepared 2026-11-05; publish pending)
+
+Token requests from the component specs (conventions section 14):
+
+| Request | Token (under `shamallya.`) | Value | Tailwind utility |
+|---------|---------------------------|-------|------------------|
+| TR-22 | `primitive.font.size.subtitle`, `semantic.size.subtitle` | 1.375rem (22 px) in every mode | `text-ui-subtitle` |
+| TR-32 | `primitive.font.size.headline`, `semantic.size.headline` | 2rem (32 px) in every mode | `text-ui-headline` |
+| TR-stroke | `semantic.size.icon-stroke`, `semantic.size.icon-stroke-active` | 2 and 2.2, unitless numbers, same in every mode (icon sizes do not scale in comfortable mode) | `stroke-icon`, `stroke-icon-active` |
+
+TR-inset and TR-tabw were not in scope for this release. Names follow section 4 (role words, not pixel values); the 22 and 32 px sizes are fixed because the specs state pixels, unlike `title`, which grows in comfortable mode.
+
+Tailwind preset: it now also exposes the semantic size, spacing, border width, focus ring, weight, line height, tracking and stroke tokens under the utility names the components repo used (`control`, `target`, `icon-*`, `switch-w/h/thumb`, `inset-*`, `gap-*`, `stack-*`, `bw-*`, `ring`, `ui-*` font sizes, `label` tracking). A semantic size token with no utility mapping fails the build. Note: `lineHeight` `tight` and `relaxed` now resolve to the tokens (1.2 and 1.7) instead of Tailwind's defaults.
+
+Contrast: `build/contrast-pairs.json` has an `exemptions` list (token plus reason). A semantic colour in no pair and not exempt fails the tests. Exempt today: `border.default`, `border.subtle`, `border.card` (decorative, below 3:1), `text.disabled` and the nine tag borders.
+
+Build rules: validation runs before anything in `dist` is written; brand theme dark selectors follow the root's `data-theme` like `tokens.css`; `luminance` throws on a colour with alpha; `prepublishOnly` runs the full check.

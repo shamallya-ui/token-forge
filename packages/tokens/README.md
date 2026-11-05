@@ -13,6 +13,8 @@ Outputs (in `dist/` after `npm run build` at the repo root):
 
 **Comfortable mode** (0.3.0): add `data-density="comfortable"` to the root or any container to get 56px controls, 48px targets and a 15px text floor, through the `--shamallya-semantic-size-*` variables.
 
+**0.5.0**: `--shamallya-semantic-size-subtitle` (22px), `-headline` (32px) and `-icon-stroke` / `-icon-stroke-active` (2 and 2.2, unitless; use as the SVG `stroke-width`). The Tailwind preset exposes the semantic size, spacing, border width, ring, weight, line height and tracking tokens, so no second mapping is needed: `h-control`, `min-h-target`, `size-icon-md`, `p-inset-md`, `gap-gap-sm`, `border-bw-default`, `outline-ring`, `text-ui-headline`, `font-semibold`, `tracking-label`, `stroke-icon-active`. Brand themes follow the root's `data-theme`.
+
 Use semantic tokens only in apps (for example `--shamallya-semantic-color-primary-default`). Primitives are for the system itself. See the repository docs for naming, tiers and accessibility targets.
 
 Licence: MIT.

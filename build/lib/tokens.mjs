@@ -224,6 +224,7 @@ export function resolveAll(tokens, overrides = new Map()) {
 // ---- Contrast (WCAG 2.2 relative luminance) ----
 const channel = (c) => { const v = c / 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
 export function luminance(hex) {
+  if (!/^#[0-9A-Fa-f]{6}([fF]{2})?$/.test(hex)) throw new Error(`luminance needs an opaque colour (#RRGGBB or #RRGGBBff), got ${hex}`);
   const h = hex.replace('#', '');
   const [r, g, b] = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16));
   return 0.2126 * channel(r) + 0.7152 * channel(g) + 0.0722 * channel(b);

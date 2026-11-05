@@ -2,6 +2,24 @@
 
 All notable changes to `@shamallya-ui/tokens`. Versioning follows semver: a removed or renamed token is a major change, new tokens are minor, value tweaks that keep a token's meaning are patch.
 
+## 0.5.0 - 2026-11-05 (prepared; publish pending)
+
+Added (token requests from the component specs):
+
+- `semantic.size.subtitle` (22 px, TR-22) and `semantic.size.headline` (32 px, TR-32), backed by `primitive.font.size.subtitle` and `headline`. Same value in default and comfortable mode.
+- `semantic.size.icon-stroke` (2) and `icon-stroke-active` (2.2) for the active tab icon (TR-stroke); unitless numbers.
+- Tailwind preset now also exposes semantic sizes (`control`, `target`, `icon-*`, `switch-*`), semantic spacing (`inset-*`, `gap-*`, `stack-*`, `section`, `touch-target`), `bw-*` border widths, focus ring width and offset (`ring`), font weights, line heights, label tracking, `ui-*` font sizes and `strokeWidth`. `lineHeight.tight` and `relaxed` now follow the tokens (1.2 and 1.7).
+
+Fixed:
+
+- Brand theme dark selectors follow the root's `data-theme`, like `tokens.css`. Before, a brand container in a system-dark page ignored a forced-light root, and any `data-theme="dark"` ancestor flipped the brand.
+- `luminance` throws on a colour whose alpha is not ff, instead of computing a wrong ratio.
+- The build validates all tokens and themes before writing `dist`, so a bad token no longer leaves a half-built package.
+- `prepublishOnly` runs lint, build, contrast and tests, not only the build.
+- Contrast coverage is enforced: every semantic colour is in a pair or in the new `exemptions` list with a reason (13 exempt).
+
+No tokens were removed or renamed. 65 tests pass.
+
 ## 0.4.0 - 2026-11-03 (published 2026-11-05)
 
 Added (found by the designer and testing agents specifying the first React components):
