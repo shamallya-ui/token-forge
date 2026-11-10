@@ -2,7 +2,7 @@
 
 All notable changes to `@shamallya-ui/tokens`. Versioning follows semver: a removed or renamed token is a major change, new tokens are minor, value tweaks that keep a token's meaning are patch.
 
-## 0.5.0 - 2026-11-05 (prepared; publish pending)
+## 0.5.0 - 2026-11-05 (published 2026-11-05)
 
 Added (token requests from the component specs):
 
