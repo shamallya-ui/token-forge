@@ -2,6 +2,21 @@
 
 All notable changes to `@shamallya-ui/tokens`. Versioning follows semver: a removed or renamed token is a major change, new tokens are minor, value tweaks that keep a token's meaning are patch.
 
+## 0.6.0 - 2026-11-10 (published 2026-11-10)
+
+Added (requested in ShaMallya Components `components.md` rows 104 and 105):
+
+- `shamallya.component.button.radius` is now `0.25rem`, set directly so `semantic.radius.control` (still `0.5rem`) is untouched. Decided with Shamala 2026-11-10; the original request named `0.125rem`.
+- The Tailwind preset exposes the button radius as `borderRadius.button` (`rounded-button`); the components repo swaps `rounded-control` for it in `button.tsx:31`.
+- `shamallya.semantic.font.weight.{control,label,button,heading}` at 500 and `heading-strong` at 600, backed by `primitive.font.weight.medium` and `semibold`. Controls, labels and buttons render medium instead of semibold; headings render 500 to 600 instead of bold.
+
+Changed:
+
+- `primitive.font.family.heading` and `body` now lead with Plus Jakarta Sans (was Fraunces and Inter); system-ui/sans-serif fallbacks kept. Load Plus Jakarta Sans (weights 400, 500, 600) via Google Fonts in the gallery page and registry setup guidance (components repo follow-up).
+- `semantic.font.weight.*` values are exposed as Tailwind `fontWeight` keys (`control`, `label`, `button`, `heading`, `heading-strong`).
+
+No tokens were removed or renamed.
+
 ## 0.5.0 - 2026-11-05 (published 2026-11-05)
 
 Added (token requests from the component specs):

@@ -46,9 +46,11 @@ StyleDictionary.registerFormat({
       else if (tier === 'semantic' && cat === 'size') { const [key, name] = sizeMap(rest.join('-')); maps[key][name] = v(t); }
       else if (tier === 'primitive' && cat === 'font' && rest[0] === 'weight') maps.fontWeight[rest[1]] = v(t);
       else if (tier === 'primitive' && cat === 'font' && rest[0] === 'line-height') maps.lineHeight[rest[1]] = v(t);
+      else if (tier === 'component' && cat === 'button' && rest.join('-') === 'radius') maps.borderRadius.button = v(t);
       else if (tier === 'semantic' && cat === 'radius') maps.borderRadius[rest.join('-')] = v(t);
       else if (tier === 'semantic' && cat === 'shadow') maps.boxShadow[rest.join('-')] = v(t);
       else if (tier === 'semantic' && cat === 'z') maps.zIndex[rest.join('-')] = v(t);
+      else if (tier === 'semantic' && cat === 'font' && rest[0] === 'weight') maps.fontWeight[rest.slice(1).join('-')] = v(t);
       else if (tier === 'semantic' && cat === 'font') maps.fontFamily[rest.join('-')] = [v(t)];
       else if (tier === 'primitive' && cat === 'font' && rest[0] === 'size') maps.fontSize[rest.slice(1).join('-')] = v(t);
       else if (tier === 'semantic' && cat === 'motion' && rest[0].startsWith('transition-')) maps.transitionDuration[rest[0].replace('transition-', '')] = v(t);

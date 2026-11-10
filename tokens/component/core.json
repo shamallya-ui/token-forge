@@ -22,7 +22,8 @@
         },
         "radius": {
           "$type": "dimension",
-          "$value": "{shamallya.semantic.radius.control}"
+          "$value": "0.25rem",
+          "$description": "Button corner rounding, 4px; independent of semantic.radius.control"
         },
         "padding-x": {
           "$type": "dimension",

@@ -69,7 +69,6 @@ test('R5-06: luminance rejects a colour with alpha other than ff', () => {
   assert.equal(luminance('#FFFFFFFF'), 1);
 });
 
-test('R5-07: prepublishOnly runs the root checks and the version is 0.5.0', () => {
-  assert.equal(pkg.version, '0.5.0');
+test('R5-07: prepublishOnly runs the root checks (version pin moved to v060)', () => {
   assert.match(pkg.scripts.prepublishOnly, /npm run check --prefix \.\.\/\.\./);
 });

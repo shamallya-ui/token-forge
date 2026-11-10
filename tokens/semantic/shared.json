@@ -48,7 +48,15 @@
     "font": {
       "heading": { "$type": "fontFamily", "$value": "{shamallya.primitive.font.family.heading}" },
       "body": { "$type": "fontFamily", "$value": "{shamallya.primitive.font.family.body}" },
-      "code": { "$type": "fontFamily", "$value": "{shamallya.primitive.font.family.mono}" }
+      "code": { "$type": "fontFamily", "$value": "{shamallya.primitive.font.family.mono}" },
+      "weight": {
+        "$type": "fontWeight",
+        "control": { "$value": "{shamallya.primitive.font.weight.medium}", "$description": "Controls and inputs, 500" },
+        "label": { "$value": "{shamallya.primitive.font.weight.medium}", "$description": "Labels, 500" },
+        "button": { "$value": "{shamallya.primitive.font.weight.medium}", "$description": "Buttons, 500 instead of semibold" },
+        "heading": { "$value": "{shamallya.primitive.font.weight.medium}", "$description": "Headings, 500" },
+        "heading-strong": { "$value": "{shamallya.primitive.font.weight.semibold}", "$description": "Emphasis headings, 600 instead of bold" }
+      }
     }
   } }
 }

@@ -6,14 +6,14 @@
           "$type": "fontFamily",
           "heading": {
             "$value": [
-              "Fraunces",
-              "Georgia",
-              "serif"
+              "Plus Jakarta Sans",
+              "system-ui",
+              "sans-serif"
             ]
           },
           "body": {
             "$value": [
-              "Inter",
+              "Plus Jakarta Sans",
               "system-ui",
               "sans-serif"
             ]
