@@ -119,7 +119,7 @@ Backgrounds: light mode is soft cream #FAF7F2; dark mode is warm black #1C1917. 
 | Q1 | ~~Exact hex values~~ **RESOLVED**: direction B, "warm editorial" (ADR-0007) | Done |
 | Q2 | ~~Logo~~ **RESOLVED**: concept 2 (SM monogram tile) with the concept 1 wordmark lockup; tile is the logo, concept 5 is the title lockup; all ten sub-questions answered in docs/brand/logo-typography-brief.md; only the name-availability check remains | Done |
 | Q3 | ~~Typography~~ **RESOLVED**: pairing A, Fraunces / Inter / JetBrains Mono (docs/brand/logo-typography-brief.md). Remaining: self-host fonts for offline PWAs | Done |
-| Q4 | **Component list**: V1 (33 rows, from the deployed Vibgyor site) is approved. **V2 (21 rows, Konkani planner) is deferred**: it needs refinement and will be added later. See docs/components.md | V1 done; V2 later |
+| Q4 | **Component list**: V1 (33 rows, from the deployed Vibgyor site) is approved. **V2 (21 rows, Konkani planner) is deferred**: it needs refinement and will be added later. The list now lives in ShaMallya Components (`docs/v1-component-list.md`) | V1 done; V2 later |
 | Q5 | ~~Primary colour~~ **RESOLVED**: blue is the default action colour | Done |
 | Q6 | Info shares blue with primary per the decision; should info use a distinct step or tint to tell it apart from primary actions? | Before semantic mapping |
 | Q7 | ~~Licence~~ **RESOLVED**: MIT. Public repository name still to be chosen | Done (name later) |

@@ -105,7 +105,7 @@ Principles: the DTCG file is the only hand-edited source; outputs are never edit
 
 Strategy: components consume only semantic and component tokens; behaviour and accessibility follow the underlying headless primitives; the React and Svelte variants share the same names, props semantics and token mapping.
 
-The full prioritised list, drawn from Vibgyor and the Konkani Meal Planner, is in [components.md](components.md). Original proposed starter set (superseded by that list): button, input, textarea, select, checkbox, radio, switch, label and form field, card, badge/status tag, alert/banner, dialog, tooltip, tabs, toast, table, navigation bar, avatar, skeleton/loader.
+Component requirements, specs, status and the component list now live in the ShaMallya Components project (`components.md` and `docs/` there); this repo keeps only the tokens.
 
 ## 8. Showcase site
 
@@ -306,7 +306,7 @@ Semver for the packages (breaking token rename/removal is a major); changelog on
 | [0007](adr/0007-palette-warm-editorial.md) | Palette direction B, warm editorial |
 | [0008](adr/0008-lucide-icons-and-tag-colours.md) | Lucide icons; coloured or neutral tags |
 | [0009](adr/0009-comfortable-touch-mode.md) | Comfortable touch mode as a token set; new canvas and subtle-border tokens |
-| [0010](adr/0010-shadcn-registry-mapped-to-tokens.md) | shadcn as owned source, delivered by registry, mapped to tokens |
+| 0010 | shadcn as owned source, delivered by registry, mapped to tokens (moved to ShaMallya Components, `docs/adr/`) |
 | [0011](adr/0011-slate-teal-theme-for-planner.md) | Slate-teal as the second theme, for the Konkani Meal Planner |
 
 ## 15. Testing and Documentation Updates

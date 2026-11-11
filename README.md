@@ -76,7 +76,6 @@ Light-mode page background is soft cream #FAF7F2; dark mode uses the warm black.
 | [docs/architecture.md](docs/architecture.md) | Token tiers, categories, naming, theming, pipeline, components, showcase, repo layout, palette design |
 | [docs/testing-matrix.md](docs/testing-matrix.md) | Requirements mapped to QA criteria |
 | [docs/ideas.md](docs/ideas.md) | Suggested ideas and recommendations |
-| [docs/components.md](docs/components.md) | Component list drawn from Vibgyor and the Konkani Meal Planner |
 | [docs/brand/logo-typography-brief.md](docs/brand/logo-typography-brief.md) | Five logo concepts and three type pairings |
 | [docs/adr/](docs/adr/) | Architecture decision records (0001 to 0011) |
 
